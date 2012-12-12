@@ -3,7 +3,8 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-    <head>
+<head>
+    <META HTTP-EQUIV="refresh" CONTENT="0;URL=./ListAccount">    
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
@@ -11,3 +12,4 @@
         <h1>Hello World!</h1>
     </body>
 </html>
+

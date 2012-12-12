@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.depaul.cdm.se.account.servlet;
 
 import edu.depaul.cdm.se.account.service.AccountService;
@@ -14,10 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author ubuntu
- */
 @WebServlet(name = "DepositAccountServlet", urlPatterns = {"/DepositAccount"})
 public class WithdrawAccountServlet extends HttpServlet {
     @EJB
