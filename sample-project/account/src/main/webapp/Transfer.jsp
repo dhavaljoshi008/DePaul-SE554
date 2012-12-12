@@ -13,7 +13,7 @@
     <body>
 
     <h1>Transfer Funds</h1>
-    <form id="transferAccountForm" action="TransferAccount" method="post">
+    <form id="transferAccountForm" action="TransferFunds" method="post">
     <table>
         <tr><td>From Account:</td><td><input type="text" id = "fromAccount" name="fromAccount" /></td></tr>
         <tr><td>To Account:</td><td><input type="text" id = "toAccount" name="toAccount" /></td></tr>

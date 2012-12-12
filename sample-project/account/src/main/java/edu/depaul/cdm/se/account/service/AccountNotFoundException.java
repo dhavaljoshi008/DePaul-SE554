@@ -1,5 +1,5 @@
 package edu.depaul.cdm.se.account.service;
 
-class AccountNotFoundException extends Exception {
+public class AccountNotFoundException extends Exception {
     
 }
