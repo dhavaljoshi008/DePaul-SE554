@@ -3,11 +3,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Deposit into an Account</title>
+        <title>Deposit</title>
     </head>
     <body>
 
-    <h1>Deposit into Account</h1>
+    <h1>Deposit</h1>
     <form id="depositAccountForm" action="DepositAccount" method="post">
     <table>
         <tr><td>Account:</td><td><input type="text" id = "id" name="id" /></td></tr>
@@ -15,6 +15,6 @@
     </table>
     <input type="submit" id="UpdateRecord" value="UpdateRecord" />
     </form>
-<a href="ListAccount"><strong>Go to List of accounts</strong></a>
+    <jsp:include page="footer.jspf"/>
 </body>
 </html>
