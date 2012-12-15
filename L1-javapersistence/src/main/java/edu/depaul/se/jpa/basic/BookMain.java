@@ -1,0 +1,126 @@
+package edu.depaul.se.jpa.basic;
+
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+/**
+ *  JPA using main
+ */
+public class BookMain {
+    private static EntityManagerFactory emf;
+    private static EntityManager em;
+    private static EntityTransaction tx;
+    
+    public static void main(String[] args) {
+        BookMain main = new BookMain();
+        emf = Persistence.createEntityManagerFactory("jpa-demoPU");
+        em = emf.createEntityManager();
+        main.createExample();
+        main.findEntity();
+//        main.updateExample();
+//        main.deleteExample();
+        em.close();
+        emf.close();
+    }
+
+    private void createExample() {
+//        emf = Persistence.createEntityManagerFactory("jpa-demoPU");
+//        em = emf.createEntityManager();
+        
+        Book book = new Book();
+        book.setTitle("Beginning Java Persistence");
+        book.setPrice((float) 49.99);
+        book.setIllustrations(false);
+        
+        tx = em.getTransaction();
+        tx.begin();
+        System.out.print("Before save: ");
+        System.out.println(book.getId());
+        em.persist(book);
+        System.out.print("After save: ");
+        System.out.println(book.getId());
+        tx.commit();
+        
+        List<Book> books = 
+                em.createNamedQuery("findAllBooks").getResultList();
+        
+        System.out.println("Number of rows: " + books.size());
+
+//        em.close();
+//        emf.close();
+    }
+    
+    private void updateExample() {
+//        emf = Persistence.createEntityManagerFactory("jpa-demoPU");
+//        em = emf.createEntityManager();
+        tx = em.getTransaction();
+        tx.begin();
+        Book book = em.find(Book.class, new Long(1));
+        System.out.println(book);
+        book.setTitle(book.getTitle() + " 2nd edition");
+        tx.commit();
+        
+        List<Book> books = 
+                em.createNamedQuery("findAllBooks").getResultList();
+        System.out.println(books.get(0));
+//        em.close();
+//        emf.close();
+    }
+    
+    private void deleteExample() {
+//        emf = Persistence.createEntityManagerFactory("jpa-demoPU");
+//        em = emf.createEntityManager();
+        tx = em.getTransaction();
+        tx.begin();
+        Book book = em.find(Book.class, new Long(1));
+        System.out.println(book);
+        em.remove(book);
+        tx.commit();
+        
+        List<Book> books = 
+                em.createNamedQuery("findAllBooks").getResultList();
+        System.out.print("After delete number of rows remaining is: ");
+        System.out.println(books.size());
+//        em.close();
+//        emf.close();
+    }
+    
+    private void findEntity() {
+        // 1. Acquire Entity Manager 
+        //EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa-demoPU");
+        //EntityManager em = emf.createEntityManager();
+        
+        // 2a.  Find the entity via primary key, auto configured
+        Book book = em.find(Book.class, new Long(1));
+        
+        // 2b.  Find via query, manually configured, see Book class definition
+        List<Book> books = 
+                em.createNamedQuery("findAllBooks").getResultList();
+        
+        // 3.  Clean up
+        //em.close();
+        //emf.close();
+    }
+    
+    private void deleteEntity() {
+        //EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa-demoPU");
+        //EntityManager em = emf.createEntityManager();
+        tx = em.getTransaction();
+        tx.begin();
+        Book book = em.find(Book.class, new Long(1));
+        System.out.println(book);
+        em.remove(book);
+        tx.commit();
+        
+        List<Book> books = 
+                em.createNamedQuery("findAllBooks").getResultList();
+        System.out.print("After delete number of rows remaining is: ");
+        System.out.println(books.size());
+        //em.close();
+        //emf.close();
+    }
+    
+}
