@@ -1,5 +1,9 @@
 JEE6 Calculator
 
+Tested using
+  IDE:  Eclipse and Netbeans
+  Server:  Glassfish
+
 Prior to adding the calculator application
 1) Start the server
 2) Add the JMS info
@@ -8,6 +12,7 @@ Prior to adding the calculator application
     ./asadmin create-jms-resource --restype javax.jms.Queue jms/CalculatorQ
 3)  If using Eclipse with Glassfish
     Define jdbc/sample database which match the parameter as jdbc/__default
+    Be sure to use Data Source Explorer to start the Sample database
 
 
 Demo to show
