@@ -2,6 +2,7 @@ package edu.depaul.cdm.se.servlet.ejb;
 
 import edu.depaul.cdm.se.ejb.LGreeterBeanLocal;
 import edu.depaul.cdm.se.ejb.RGreeterBeanRemote;
+import edu.depaul.cdm.se.ejb.impl.SimpleGreaterBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -18,6 +19,9 @@ public class GreetingServlet extends HttpServlet {
 
     @EJB
     private LGreeterBeanLocal localGreeter;
+    
+    @EJB
+    private SimpleGreaterBean greeter;
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -42,6 +46,7 @@ public class GreetingServlet extends HttpServlet {
             out.println("<h1>Servlet GreetingServlet at " + request.getContextPath() + "</h1>");
             out.println("<h1>Servlet GreetingServlet at " + remoteGreeter.greetMe("Paul") + "</h1>");
             out.println("<h1>Servlet GreetingServlet at " + localGreeter.greetMe("Ringo") + "</h1>");
+            out.println("<h1>Servlet GreetingServlet at " + greeter.greetMe("John") + "</h1>");
             out.println("</body>");
             out.println("</html>");
         } finally {            
