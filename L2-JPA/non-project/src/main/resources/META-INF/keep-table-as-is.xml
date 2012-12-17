@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="jpaPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>edu.depaul.se.jpa.basic.existingtables.Customer</class>
+    <class>edu.depaul.se.jpa.basic.existingtables.PurchaseOrder</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
+      <property name="javax.persistence.jdbc.password" value="app"/>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="javax.persistence.jdbc.user" value="app"/>
+    </properties>
+    <!--
+        Using logging level of FINE to show SQL, see 
+            http://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging    
+    -->
+    <property name="eclipselink.logging.level" value="FINE"/>
+  </persistence-unit>
+    <!--
+    Can't have multiple PU defined in EclipseLink in SE mode so need to switch off
+  <persistence-unit name="jpaBookPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>edu.depaul.se.jpa.basic.createdtables.Student</class>
+    <class>edu.depaul.se.jpa.basic.createdtables.Person</class>
+    <class>edu.depaul.se.jpa.basic.createdtables.Book</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
+      <property name="javax.persistence.jdbc.password" value="app"/>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="javax.persistence.jdbc.user" value="app"/>
+      <property name="eclipselink.ddl-generation" value="create-tables"/>
+    </properties>
+        Using logging level of FINE to show SQL, see 
+            http://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging    
+    <property name="eclipselink.logging.level" value="FINE"/>
+  </persistence-unit>
+    -->
+  -
+</persistence>
