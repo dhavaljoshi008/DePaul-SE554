@@ -1,5 +1,6 @@
 package edu.depaul.cdm.se.account.service;
 
+import java.util.List;
 import javax.ejb.Remote;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -21,4 +22,5 @@ public interface AccountServiceRemote {
     public void transferFunds(long fromAccountNumber, long toAccountNumber, float amount)
             throws AccountNotFoundException, NegativeBalanceException, InsufficientBalanceException; 
     
+    public List getAllAccounts();
 }

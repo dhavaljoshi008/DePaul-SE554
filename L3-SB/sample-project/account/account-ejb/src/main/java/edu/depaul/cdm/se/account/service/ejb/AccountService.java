@@ -2,6 +2,7 @@ package edu.depaul.cdm.se.account.service.ejb;
 
 import edu.depaul.cdm.se.account.persistence.Account;
 import edu.depaul.cdm.se.account.service.*;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -78,9 +79,16 @@ public class AccountService implements AccountServiceRemote {
         deposit(toAccountNumber, amount);
     }
 
+    @Override
+    public List getAllAccounts() {
+         return entityManager.createQuery("select a from Account a").getResultList();
+    }
+    
+    
     private void checkForPositiveBalance(float amount) throws NegativeBalanceException {
         if (amount < 0) {
             throw new NegativeBalanceException();
         }
     }
+
 }

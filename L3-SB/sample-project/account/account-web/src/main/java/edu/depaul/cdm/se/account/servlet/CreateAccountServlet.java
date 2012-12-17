@@ -17,11 +17,6 @@ public class CreateAccountServlet extends HttpServlet {
     @EJB
     private AccountServiceRemote accountService;
 
-//    @PersistenceUnit
-    //The emf corresponding to 
-//    private EntityManagerFactory emf;  
-//    @Resource
-//    private UserTransaction utx;
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
