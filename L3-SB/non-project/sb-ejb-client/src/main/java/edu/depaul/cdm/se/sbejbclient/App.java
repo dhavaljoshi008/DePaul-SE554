@@ -38,7 +38,7 @@ public class App
     
     private void runBean(Context context) throws Exception {
         String lookupKey = "java:global/edu.depaul.cdm.se_sb-ejb_ejb_1.0-SNAPSHOT/SimpleGreaterBean";
-        SimpleGreeterBean remote = (SimpleGreaterBean) context.lookup(lookupKey); 
+        SimpleGreeterBean remote = (SimpleGreeterBean) context.lookup(lookupKey); 
         System.out.print(new Date());
         System.out.print(" ");
         System.out.println( remote.greetMe("Ringo") );
