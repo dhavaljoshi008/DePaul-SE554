@@ -1,0 +1,29 @@
+!!! Warning !!!
+Need JDK 7
+Need to define GlassfishClient to point to %glassfish-3.1.1_installation_directory%\glassfish\lib\gf-client.jar
+
+To run these examples you must have GlassFish running and create the following administered objects :
+
+To manage JMS connection factories using the command-line utility from glassfish-3.1.2\glassfish\bin, 
+
+> asadmin create-jms-resource --restype javax.jms.ConnectionFactory jms/javaee6/ConnectionFactory
+> asadmin create-jms-resource --restype javax.jms.Queue jms/javaee6/Queue
+> asadmin create-jms-resource --restype javax.jms.Topic jms/javaee6/Topic
+> asadmin create-jms-resource --restype javax.jms.Queue jms/javaee6/CalculatorQ
+> asadmin create-jms-resource --restype javax.jms.Queue jms/javaee6/transferFundsQ
+
+> asadmin list-jms-resources
+jms/javaee6/CalculatorQ
+jms/javaee6/transferFundsQ
+jms/javaee6/Queue
+jms/javaee6/Topic
+jms/javaee6/ConnectionFactory
+
+If you need to empty a destination (flush all messages), this is what you need to do (the name of the destination is the physical name, not the JNDI name) :
+> asadmin flush-jmsdest --desttype queue jms_javaee6_Queue
+> asadmin flush-jmsdest --desttype topic jms_javaee6_Topic
+
+
+to validate queues have been created
+> asadmin use list-jms-resources       
+delete-jms-resource command to validate
