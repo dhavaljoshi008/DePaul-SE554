@@ -24,7 +24,9 @@ public class CalculatorBean {
      * @return
      */
     public float multiply(float lhs, float rhs) {
-        return lhs * rhs;
+        float result = lhs * rhs;
+        logger.log(lhs + " * " + rhs + " = " + result);
+        return result;
     }
 
 
@@ -35,7 +37,9 @@ public class CalculatorBean {
      * @return
      */
     public float subtract(float lhs, float rhs) {
-        return lhs - rhs;
+        float result = lhs - rhs;
+        logger.log(lhs + " - " + rhs + " = " + result);
+        return result;
     }
 
     /**
@@ -48,6 +52,8 @@ public class CalculatorBean {
         if (denominator == 0.0) {
             throw new DivideByZeroException("Denominator can not be zero");
         }
-        return numerator/denominator;
+        float result = numerator/denominator; 
+        logger.log(numerator + " * " + denominator + " = " + result);
+        return result;
     }
 }
