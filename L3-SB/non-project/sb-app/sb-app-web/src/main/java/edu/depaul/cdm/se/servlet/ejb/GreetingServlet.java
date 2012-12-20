@@ -2,7 +2,7 @@ package edu.depaul.cdm.se.servlet.ejb;
 
 import edu.depaul.cdm.se.ejb.LGreeterBeanLocal;
 import edu.depaul.cdm.se.ejb.RGreeterBeanRemote;
-import edu.depaul.cdm.se.ejb.impl.SimpleGreaterBean;
+import edu.depaul.cdm.se.ejb.impl.SimpleGreeterBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -21,7 +21,7 @@ public class GreetingServlet extends HttpServlet {
     private LGreeterBeanLocal localGreeter;
     
     @EJB
-    private SimpleGreaterBean greeter;
+    private SimpleGreeterBean greeter;
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -37,7 +37,6 @@ public class GreetingServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /* TODO output your page here. You may use following sample code. */
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet GreetingServlet</title>");            

@@ -2,7 +2,7 @@ package edu.depaul.cdm.se.sbejbclient;
 
 import edu.depaul.cdm.se.sbejb.LGreeterBeanLocal;
 import edu.depaul.cdm.se.sbejb.RGreeterBeanRemote;
-import edu.depaul.cdm.se.sbejb.impl.SimpleGreaterBean;
+import edu.depaul.cdm.se.sbejb.impl.SimpleGreeterBean;
 import java.util.Date;
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -38,7 +38,7 @@ public class App
     
     private void runBean(Context context) throws Exception {
         String lookupKey = "java:global/edu.depaul.cdm.se_sb-ejb_ejb_1.0-SNAPSHOT/SimpleGreaterBean";
-        SimpleGreaterBean remote = (SimpleGreaterBean) context.lookup(lookupKey); 
+        SimpleGreeterBean remote = (SimpleGreaterBean) context.lookup(lookupKey); 
         System.out.print(new Date());
         System.out.print(" ");
         System.out.println( remote.greetMe("Ringo") );
