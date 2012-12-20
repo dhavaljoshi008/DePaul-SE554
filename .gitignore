@@ -18,3 +18,5 @@
 /L3-SB/sample-project/account/account-ejb/target/
 /L3-SB/sample-project/account/account-ear/target/
 /L3-SB/sample-project/account/account-web/target/
+/L6-Messaging/non-project/asynch/target/
+/L6-Messaging/non-project/asynch-client/target/
