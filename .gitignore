@@ -20,3 +20,9 @@
 /L3-SB/sample-project/account/account-web/target/
 /L6-Messaging/non-project/asynch/target/
 /L6-Messaging/non-project/asynch-client/target/
+/L6-Messaging/sample-project/account/account-remote/target/
+/L6-Messaging/sample-project/account/account-ejb/target/
+/L6-Messaging/sample-project/account/account-web/target/
+/L6-Messaging/sample-project/account/account-ear/target/
+/L6-Messaging/non-project/asynch-remote/target/
+/L6-Messaging/non-project/asynch-standalone/target/
