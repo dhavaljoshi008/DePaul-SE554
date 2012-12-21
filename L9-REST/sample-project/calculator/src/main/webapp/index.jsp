@@ -9,7 +9,7 @@
       <!-- CalculatorServlet -->
       <!-- CalculatorSBServlet -->
       <!-- CalculatorMSServlet -->
-      <form action="CalculatorMSServlet">
+      <form action="CalculatorServlet">
           <input name="lhs" type="text"/>
           <select name="operator">
                 <option>+</option>
