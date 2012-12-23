@@ -15,6 +15,12 @@
     </properties>
 
     <dependencies>
+        <!-- For remote interface definition -->
+        <dependency>
+            <groupId>edu.depaul.cdm.se</groupId>
+            <artifactId>SOAP-remote</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
