@@ -8,8 +8,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <a href="GreeterService?wsdl">Java</a>
-        <a href="GreeterSBService?wsdl">Java</a>
+            <li><a href="GreeterService?wsdl">Regular Javaxx</a></li>
+            <li><a href="/GreeterSBService/GreeterSBService?wsdl">Direct SessionBean</a></li>
+            <li><a href="GreeterSBProxyService?wsdl">SessionBean Proxy</a></li>
+            <li><a href="GreeterSBExtService?wsdl">SessionBean extension</a></li>
+            <li><a href="FancyGreeterService?wsdl">Greeter with Req/Resp objects</a></li>
+            <li><a href="GreeterImplService?wsdl">GreeterService interface</a></li>
+            <li><a href="ReliableGreetingService?wsdl">RM</a></li>
     </body>
 </html>

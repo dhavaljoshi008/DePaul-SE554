@@ -9,7 +9,7 @@ import javax.jws.WebService;
 
 /**
  *
- * @author ubuntu
+ * Web service and sessionbean in one
  */
 @Stateless
 @WebService(serviceName="GreeterSBService")

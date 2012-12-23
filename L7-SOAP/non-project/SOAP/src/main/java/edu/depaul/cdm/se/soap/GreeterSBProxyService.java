@@ -6,6 +6,9 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
+/**
+ * Greeter service with proxy to the underlying service
+ */
 @WebService(serviceName = "GreeterSBProxyService")
 public class GreeterSBProxyService {
     @EJB

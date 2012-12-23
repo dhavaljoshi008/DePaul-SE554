@@ -4,6 +4,9 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 
+/**
+ * Web service as regular java object
+ */
 @WebService(serviceName = "GreeterService")
 public class GreeterService {
 
