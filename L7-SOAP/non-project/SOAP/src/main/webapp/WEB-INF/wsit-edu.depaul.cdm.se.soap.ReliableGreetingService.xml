@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <definitions 
+ xmlns="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="ReliableGreetingService" targetNamespace="http://soap.se.cdm.depaul.edu/" xmlns:tns="http://soap.se.cdm.depaul.edu/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp1="http://www.w3.org/ns/ws-policy" xmlns:fi="http://java.sun.com/xml/ns/wsit/2006/09/policy/fastinfoset/service" xmlns:tcp="http://java.sun.com/xml/ns/wsit/2006/09/policy/soaptcp/service" xmlns:wsaw="http://www.w3.org/2005/08/addressing" xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy" 
+ >
+    <message name="hello"/>
+    <message name="helloResponse"/>
+    <portType name="ReliableGreetingService">
+        <operation name="hello">
+            <input message="tns:hello"/>
+            <output message="tns:helloResponse"/>
+        </operation>
+    </portType>
+    <binding name="ReliableGreetingServicePortBinding" type="tns:ReliableGreetingService">
+        <wsp:PolicyReference URI="#ReliableGreetingServicePortBindingPolicy"/>
+        <operation name="hello">
+            <input/>
+            <output/>
+        </operation>
+    </binding>
+    <service name="ReliableGreetingService">
+        <port name="ReliableGreetingServicePort" binding="tns:ReliableGreetingServicePortBinding"/>
+    </service>
+    <wsp:Policy wsu:Id="ReliableGreetingServicePortBindingPolicy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" wsp:Optional="false"/>
+                <wsrm:RMAssertion/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</definitions>
