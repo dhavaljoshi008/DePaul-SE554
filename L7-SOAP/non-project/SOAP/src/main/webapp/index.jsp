@@ -8,7 +8,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-            <li><a href="GreeterService?wsdl">Regular Javaxx</a></li>
+            <li><a href="GreeterService?wsdl">Regular Java</a></li>
             <li><a href="/GreeterSBService/GreeterSBService?wsdl">Direct SessionBean</a></li>
             <li><a href="GreeterSBProxyService?wsdl">SessionBean Proxy</a></li>
             <li><a href="GreeterSBExtService?wsdl">SessionBean extension</a></li>
