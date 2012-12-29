@@ -24,7 +24,8 @@ public class DBLogger implements Serializable {
     private Date msg_created_time;
 
     public DBLogger() {
-        msg_created_time = new Date(System.currentTimeMillis());
+        id = System.currentTimeMillis();
+        msg_created_time = new Date(id);
     }
     
     public String getMessage() {
