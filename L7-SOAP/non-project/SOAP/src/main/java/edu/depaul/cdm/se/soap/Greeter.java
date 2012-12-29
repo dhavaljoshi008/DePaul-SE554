@@ -1,12 +1,9 @@
 package edu.depaul.cdm.se.soap;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.jws.Oneway;
+import javax.jws.HandlerChain;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
 
 /**
  * Simpliest example of Web Service 
@@ -19,6 +16,7 @@ import javax.jws.soap.SOAPBinding;
  * Web service as regular java object
  */
 @WebService
+@HandlerChain(file = "GreeterService_handler.xml")
 public class Greeter {
     @WebMethod(action="hello")
     public String hello(@WebParam(name = "name") String txt) {

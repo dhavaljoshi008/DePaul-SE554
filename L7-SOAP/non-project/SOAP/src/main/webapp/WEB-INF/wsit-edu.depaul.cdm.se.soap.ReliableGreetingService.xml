@@ -7,15 +7,35 @@
  >
     <message name="hello"/>
     <message name="helloResponse"/>
+    <message name="addString"/>
+    <message name="addStringResponse"/>
+    <message name="getResult"/>
+    <message name="getResultResponse"/>
     <portType name="ReliableGreetingService">
         <operation name="hello">
             <input message="tns:hello"/>
             <output message="tns:helloResponse"/>
         </operation>
+        <operation name="addString">
+            <input message="tns:addString"/>
+            <output message="tns:addStringResponse"/>
+        </operation>
+        <operation name="getResult">
+            <input message="tns:getResult"/>
+            <output message="tns:getResultResponse"/>
+        </operation>
     </portType>
     <binding name="ReliableGreetingServicePortBinding" type="tns:ReliableGreetingService">
         <wsp:PolicyReference URI="#ReliableGreetingServicePortBindingPolicy"/>
         <operation name="hello">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="addString">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="getResult">
             <input/>
             <output/>
         </operation>

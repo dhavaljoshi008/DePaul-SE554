@@ -20,7 +20,6 @@ import javax.xml.ws.wsaddressing.W3CEndpointReference;
             targetNamespace = "http://addressedgreetings.se.cdm.depaul.edu")
 @Addressing(required = true, enabled = true)
 public class AddressedGreeterService {
-
     @Resource
     private WebServiceContext wsc;
 
