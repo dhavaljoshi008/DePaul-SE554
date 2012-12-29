@@ -10,7 +10,7 @@ import javax.jws.Oneway;
 import javax.jws.WebService;
 
 /**
- * Oneway service
+ * Oneway (aka fire and forget) service example
  */
 @WebService
 public class LongAwaitedGreeting {
