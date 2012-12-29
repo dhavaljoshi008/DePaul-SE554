@@ -1,14 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.depaul.cdm.se.soap;
 
 import javax.ejb.Stateless;
 import javax.jws.WebService;
 
 /**
- *
  * Web service and sessionbean in one
  */
 @Stateless

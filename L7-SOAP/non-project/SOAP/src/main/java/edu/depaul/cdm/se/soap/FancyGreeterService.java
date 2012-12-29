@@ -4,19 +4,21 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 
+/**
+ * Web service with object rather than simple basic type
+ * 
+ */
 @WebService(serviceName="FancyGreeterService")
 public class FancyGreeterService {
-
-    /**
-     * Web service operation
-     */
     @WebMethod(operationName = "sayIt")
     public GreeterResponse sayIt(@WebParam(name = "request") GreeterRequest request) {
-        //TODO write your implementation code here:
-        return null;
+        GreeterResponse response = new GreeterResponse(request.getName());
+        return response;
     }
     
     public GreeterResponse saySomethingElse(GreeterRequest request) {
-        return null;
+        GreeterResponse response = new GreeterResponse(request.getName());
+        response.setMessage("Say something, ");
+        return response;
     }
 }

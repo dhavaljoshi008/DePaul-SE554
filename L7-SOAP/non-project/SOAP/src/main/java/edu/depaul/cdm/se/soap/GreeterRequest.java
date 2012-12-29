@@ -1,13 +1,22 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.depaul.cdm.se.soap;
 
-/**
- *
- * @author ubuntu
- */
 public class GreeterRequest {
+    private String name;
     
+    public GreeterRequest() {
+        super();
+    }
+    
+    public GreeterRequest(String name) {
+        super();
+        this.name = name;
+    }
+    
+    public void setName(String name) {
+        this.name = name; 
+    }
+    
+    public String getName() {
+        return name;
+    }
 }

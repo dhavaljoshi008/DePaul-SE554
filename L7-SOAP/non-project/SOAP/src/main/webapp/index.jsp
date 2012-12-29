@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>SOAP demos</title>
     </head>
     <body>
             <li><a href="GreeterService?wsdl">Regular Java</a></li>
@@ -14,6 +14,7 @@
             <li><a href="GreeterSBExtService?wsdl">SessionBean extension</a></li>
             <li><a href="FancyGreeterService?wsdl">Greeter with Req/Resp objects</a></li>
             <li><a href="GreeterImplService?wsdl">GreeterService interface</a></li>
-            <li><a href="ReliableGreetingService?wsdl">RM</a></li>
+            <li><a href="AddressedGreeterService?wsdl">Addressing</a></li>
+            <li><a href="ReliableGreetingService?wsdl">Reliable Message</a></li>
     </body>
 </html>
