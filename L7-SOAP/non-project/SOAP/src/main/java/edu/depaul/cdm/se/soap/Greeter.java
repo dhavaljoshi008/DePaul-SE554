@@ -1,5 +1,8 @@
 package edu.depaul.cdm.se.soap;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -21,4 +24,5 @@ public class Greeter {
     public String hello(@WebParam(name = "name") String txt) {
         return "Hello " + txt + " !";
     }
+
 }

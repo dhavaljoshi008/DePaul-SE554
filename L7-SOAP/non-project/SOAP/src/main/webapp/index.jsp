@@ -14,6 +14,7 @@
             <li><a href="GreeterSBExtService?wsdl">SessionBean extension</a></li>
             <li><a href="FancyGreeterService?wsdl">Greeter with Req/Resp objects</a></li>
             <li><a href="GreeterImplService?wsdl">GreeterService interface</a></li>
+            <li><a href="LongAwaitedGreetingService?wsdl">Long awaited greeting</a></li>
             <li><a href="AddressedGreeterService?wsdl">Addressing</a></li>
             <li><a href="ReliableGreetingService?wsdl">Reliable Message</a></li>
     </body>
