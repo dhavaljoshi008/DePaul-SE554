@@ -17,7 +17,7 @@ import javax.xml.ws.wsaddressing.W3CEndpointReference;
  * WS-Addressed example
  */
 @WebService(serviceName = "AddressedGreeterService",
-targetNamespace = "http://addressedgreetings.se.cdm.depaul.edu")
+            targetNamespace = "http://addressedgreetings.se.cdm.depaul.edu")
 @Addressing(required = true, enabled = true)
 public class AddressedGreeterService {
 
