@@ -105,6 +105,20 @@
                         <id>wsimport-generate-GreeterService</id>
                         <phase>generate-sources</phase>
                     </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>localhost_8080/SOAP/AddressedGreeterService.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <wsdlLocation>http://localhost:8080/SOAP/AddressedGreeterService?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/AddressedGreeterService.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-AddressedGreeterService</id>
+                        <phase>generate-sources</phase>
+                    </execution>
                 </executions>
                 <dependencies>
                     <dependency>
