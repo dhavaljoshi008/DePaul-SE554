@@ -2,8 +2,9 @@ package edu.depaul.cdm.se.soapclient;
 
 import edu.depaul.cdm.se.addressedgreetings.AddressedGreeterService;
 import edu.depaul.cdm.se.addressedgreetings.AddressedGreeterService_Service;
+import edu.depaul.cdm.se.soap.Greeter;
 import edu.depaul.cdm.se.soap.GreeterService;
-import edu.depaul.cdm.se.soap.GreeterService_Service;
+import javax.xml.ws.BindingProvider;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +14,9 @@ public class Main {
     }
     
     public void doGreet() {
-        GreeterService service = new GreeterService_Service().getGreeterServicePort();
+        Greeter service = new GreeterService().getGreeterPort();
+        // To change the endpoint rather than generated end point        
+        // ((BindingProvider) service).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:8080/Hello");
         System.out.println(service.hello("Dave"));
     }
     

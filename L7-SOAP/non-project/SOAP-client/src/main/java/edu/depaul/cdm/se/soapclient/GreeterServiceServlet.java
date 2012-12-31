@@ -1,10 +1,10 @@
 package edu.depaul.cdm.se.soapclient;
 
+import edu.depaul.cdm.se.soap.Greeter;
 import edu.depaul.cdm.se.soap.GreeterService;
-import edu.depaul.cdm.se.soap.GreeterService_Service;
-import edu.depaul.cdm.se.soapremote.IGreeterService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,8 +14,8 @@ import javax.xml.ws.WebServiceRef;
 
 @WebServlet(name = "GreeterServiceServlet", urlPatterns = {"/GreeterServiceServlet"})
 public class GreeterServiceServlet extends HttpServlet {
-    @WebServiceRef(wsdlLocation = "http://localhost:8080/SOAP/GreeterService?wsdl")
-    private GreeterService_Service service;
+    @WebServiceRef
+    private GreeterService service;
 
     /**
      * Processes requests for both HTTP
@@ -31,7 +31,7 @@ public class GreeterServiceServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        GreeterService greeter = service.getGreeterServicePort();
+        Greeter greeter = service.getGreeterPort();
         try {
             /* TODO output your page here. You may use following sample code. */
             out.println("<html>");
@@ -41,7 +41,7 @@ public class GreeterServiceServlet extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet GreeterServiceServlet at " + request.getContextPath() + "</h1>");
             out.print("<h2>");
-            out.print(greeter.hello("Roger"));
+            out.print(greeter.hello("Roger @" + new Date()));
             out.print("</h2>");
             out.println("</body>");
             out.println("</html>");
