@@ -8,7 +8,9 @@
         <title>SOAP demos</title>
     </head>
     <body>
+        Provides for sample wsdl files
             <li><a href="GreeterService?wsdl">Regular Java</a></li>
+            <li><a href="ChildGreeterService?wsdl">Inherited Web Service</a></li>
             <li><a href="/GreeterSBService/GreeterSBService?wsdl">Direct SessionBean</a></li>
             <li><a href="GreeterSBProxyService?wsdl">SessionBean Proxy</a></li>
             <li><a href="GreeterSBExtService?wsdl">SessionBean extension</a></li>

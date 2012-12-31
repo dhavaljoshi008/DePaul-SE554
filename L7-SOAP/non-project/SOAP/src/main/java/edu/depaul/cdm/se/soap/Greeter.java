@@ -15,7 +15,7 @@ import javax.jws.WebService;
  * 3) @WebParam
  * Web service as regular java object
  */
-@WebService
+@WebService// (wsdlLocation="GreeterService.wsdl")
 @HandlerChain(file = "GreeterService_handler.xml")
 public class Greeter {
     @WebMethod(action="hello")
