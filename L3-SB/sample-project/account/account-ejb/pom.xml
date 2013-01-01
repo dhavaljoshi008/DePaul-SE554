@@ -4,12 +4,12 @@
     <parent>
     <artifactId>account</artifactId>
     <groupId>edu.depaul.cdm.se</groupId>
-    <version>1.0-SNAPSHOT</version>
+    <version>2.0</version>
   </parent>
 
     <groupId>edu.depaul.cdm.se</groupId>
     <artifactId>account-ejb</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>2.0</version>
     <packaging>ejb</packaging>
 
     <name>account-ejb</name>
