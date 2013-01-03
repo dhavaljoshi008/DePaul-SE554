@@ -26,3 +26,6 @@
 /L6-Messaging/sample-project/account/account-ear/target/
 /L6-Messaging/non-project/asynch-remote/target/
 /L6-Messaging/non-project/asynch-standalone/target/
+/L1-javapersistence/target/
+/L7-SOAP/non-project/SOAP/target/
+/L7-SOAP/non-project/SOAP-client/target/

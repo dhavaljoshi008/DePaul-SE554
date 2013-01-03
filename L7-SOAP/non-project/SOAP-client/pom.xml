@@ -15,12 +15,6 @@
     </properties>
 
     <dependencies>
-        <!-- For remote interface definition -->
-        <dependency>
-            <groupId>edu.depaul.cdm.se</groupId>
-            <artifactId>SOAP-remote</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -97,12 +91,12 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>localhost_8080/SOAP/GreeterService.wsdl</wsdlFile>
+                                <wsdlFile>localhost_8080/SOAP/AddressedGreeterService.wsdl</wsdlFile>
                             </wsdlFiles>
-                            <wsdlLocation>http://localhost:8080/SOAP/GreeterService?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/GreeterService.stale</staleFile>
+                            <wsdlLocation>http://localhost:8080/SOAP/AddressedGreeterService?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/AddressedGreeterService.stale</staleFile>
                         </configuration>
-                        <id>wsimport-generate-GreeterService</id>
+                        <id>wsimport-generate-AddressedGreeterService</id>
                         <phase>generate-sources</phase>
                     </execution>
                     <execution>
@@ -111,12 +105,12 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>localhost_8080/SOAP/AddressedGreeterService.wsdl</wsdlFile>
+                                <wsdlFile>localhost_8080/SOAP/GreeterService.wsdl</wsdlFile>
                             </wsdlFiles>
-                            <wsdlLocation>http://localhost:8080/SOAP/AddressedGreeterService?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/AddressedGreeterService.stale</staleFile>
+                            <wsdlLocation>http://localhost:8080/SOAP/GreeterService?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/GreeterService.stale</staleFile>
                         </configuration>
-                        <id>wsimport-generate-AddressedGreeterService</id>
+                        <id>wsimport-generate-GreeterService</id>
                         <phase>generate-sources</phase>
                     </execution>
                 </executions>
