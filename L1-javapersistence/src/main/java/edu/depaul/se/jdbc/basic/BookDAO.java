@@ -13,10 +13,10 @@ import java.util.List;
  */
 public class BookDAO {
 
-    private static final String CONNECTION_URL = "jdbc:derby://localhost:1527/sample";
-    private static final String DRIVER_CLASS = "org.apache.derby.jdbc.ClientDriver";
-    private static final String USER_NAME = "app";
-    private static final String PASSWORD = "app";
+    private static final String CONNECTION_URL = "jdbc:hsqldb:mem:.";
+    private static final String DRIVER_CLASS = "org.hsqldb.jdbcDriver";
+    private static final String USER_NAME = "";
+    private static final String PASSWORD = "";
 
     static {
         try {
