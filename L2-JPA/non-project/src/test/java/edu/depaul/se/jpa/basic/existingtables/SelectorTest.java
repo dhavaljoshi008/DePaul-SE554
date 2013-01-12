@@ -1,10 +1,14 @@
 package edu.depaul.se.jpa.basic.existingtables;
 
+import java.util.Hashtable;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 import javax.persistence.*;
+import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -31,7 +35,7 @@ public class SelectorTest {
     @BeforeClass
     public static void setUpClass() throws Exception {
         // 1. Acquire Entity Manager 
-        emf = Persistence.createEntityManagerFactory("jpaPU");
+        emf = Persistence.createEntityManagerFactory("existingTablePU");
         em = emf.createEntityManager();
     }
 
