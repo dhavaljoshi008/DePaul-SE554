@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <!-- Persistence Unit that uses in memory database just to show it working but may want to change it to real database to show physical table -->
     <persistence-unit name="jpaPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>edu.depaul.se.jpa.basic.createdtables.Book</class>
@@ -28,6 +29,7 @@
         -->
         <property name="eclipselink.logging.level" value="FINE"/>
     </persistence-unit>
+    <!-- Persistence Unit that uses existing table -->
     <persistence-unit name="existingTablePU" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>edu.depaul.se.jpa.basic.existingtables.Customer</class>
