@@ -4,12 +4,12 @@
     <parent>
         <artifactId>account</artifactId>
         <groupId>edu.depaul.cdm.se</groupId>
-        <version>3.0</version>
+        <version>3.0.0</version>
     </parent>
 
     <groupId>edu.depaul.cdm.se</groupId>
     <artifactId>account-web</artifactId>
-    <version>3.0</version>
+    <version>3.0.0</version>
     <packaging>war</packaging>
 
     <name>account-web</name>
@@ -29,7 +29,7 @@
         <dependency>
             <groupId>edu.depaul.cdm.se</groupId>
             <artifactId>account-remote</artifactId>
-            <version>1.0-SNAPSHOT</version>    
+            <version>3.0.0</version>    
         </dependency>
     </dependencies>
 
