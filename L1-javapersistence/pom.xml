@@ -4,7 +4,7 @@
 
     <artifactId>persistence</artifactId>
     <packaging>jar</packaging>
-    <name>L1-Persistence</name>
+    <name>Persistence</name>
     <description>java persistence</description>
     <groupId>edu.depaul.cdm.se</groupId>
     <version>1.0.0</version>
