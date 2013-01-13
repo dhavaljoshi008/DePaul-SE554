@@ -12,7 +12,6 @@ import javax.persistence.Persistence;
 public class BookMain {
     private static EntityManagerFactory emf;
     private static EntityManager em;
-    private static EntityTransaction tx;
     
     public static void main(String[] args) {
         BookMain main = new BookMain();
@@ -35,7 +34,7 @@ public class BookMain {
         book.setPrice((float) 49.99);
         book.setIllustrations(false);
         
-        tx = em.getTransaction();
+        EntityTransaction tx = em.getTransaction();
         tx.begin();
         System.out.print("Before save: ");
         System.out.println(book.getId());
@@ -56,7 +55,7 @@ public class BookMain {
     private void updateExample() {
 //        emf = Persistence.createEntityManagerFactory("jpa-demoPU");
 //        em = emf.createEntityManager();
-        tx = em.getTransaction();
+        EntityTransaction tx = em.getTransaction();
         tx.begin();
         Book book = em.find(Book.class, new Long(1));
         System.out.println(book);
@@ -73,7 +72,7 @@ public class BookMain {
     private void deleteExample() {
 //        emf = Persistence.createEntityManagerFactory("jpa-demoPU");
 //        em = emf.createEntityManager();
-        tx = em.getTransaction();
+        EntityTransaction tx = em.getTransaction();
         tx.begin();
         Book book = em.find(Book.class, new Long(1));
         System.out.println(book);
@@ -108,7 +107,7 @@ public class BookMain {
     private void deleteEntity() {
         //EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa-demoPU");
         //EntityManager em = emf.createEntityManager();
-        tx = em.getTransaction();
+        EntityTransaction tx = em.getTransaction();
         tx.begin();
         Book book = em.find(Book.class, new Long(1));
         System.out.println(book);
