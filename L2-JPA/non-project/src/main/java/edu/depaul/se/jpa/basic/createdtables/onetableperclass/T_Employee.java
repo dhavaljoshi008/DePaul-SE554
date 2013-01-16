@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.depaul.se.jpa.basic.createdtables.onetableperclass;
 
 import java.io.Serializable;
@@ -16,10 +12,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- *
- * @author kyu
- */
 @Entity
 @Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
 public abstract class T_Employee implements Serializable{
