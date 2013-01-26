@@ -10,7 +10,7 @@ import javax.persistence.*;
 @LocalBean
 public class BookSessionCMT {
 
-    @PersistenceContext(unitName="sb-demoPU")
+    @PersistenceContext(unitName="se554PU")
     private EntityManager em;
     
     public List<Book> getAllBooks() {
