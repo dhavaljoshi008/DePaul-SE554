@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.depaul.cdm.se.servlet.ejb;
 
 import edu.depaul.cdm.se.sbejb.IStatefulCounter;
@@ -16,11 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author ubuntu
- */
 @WebServlet(name = "InstanceCounterServlet", urlPatterns = {"/InstanceCounterServlet"})
 public class InstanceCounterServlet extends HttpServlet {
 
@@ -41,11 +34,19 @@ public class InstanceCounterServlet extends HttpServlet {
 
         final String sfLookupKey = "java:global/edu.depaul.cdm.se_sb-app-ear_ear_1.5-SNAPSHOT/sb-app-ejb-1.5-SNAPSHOT/StatefulCounter";
         final String slLookupKey = "java:global/edu.depaul.cdm.se_sb-app-ear_ear_1.5-SNAPSHOT/sb-app-ejb-1.5-SNAPSHOT/StatelessCounter";
-
+        final String sessionKey = "counter";
+        
         try {
             Context context = new InitialContext();
             IStatelessCounter statelessCounter = (IStatelessCounter) context.lookup(slLookupKey);
-            IStatefulCounter statefulCounter = (IStatefulCounter) context.lookup(sfLookupKey);
+            IStatefulCounter statefulCounter;
+            
+            HttpSession session = request.getSession(true);
+            statefulCounter = (IStatefulCounter) session.getAttribute(sessionKey);
+            if (statefulCounter == null) {
+                statefulCounter = (IStatefulCounter) context.lookup(sfLookupKey);
+                session.setAttribute(sessionKey, statefulCounter);
+            }    
 
             statefulCounter.increment();
             statelessCounter.increment();

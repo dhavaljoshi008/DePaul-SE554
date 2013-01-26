@@ -1,15 +1,10 @@
 package edu.depaul.cdm.se.servlet.ejb;
 
-import edu.depaul.cdm.se.ejb.impl.StatefulCounter;
-import edu.depaul.cdm.se.ejb.impl.StatelessCounter;
 import edu.depaul.cdm.se.sbejb.IStatefulCounter;
 import edu.depaul.cdm.se.sbejb.IStatelessCounter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * Demo stateless vs stateful session
+ * Demo stateless vs stateful session and multi threading from web container
  */
 @WebServlet(name = "CounterServlet", urlPatterns = {"/CounterServlet"})
 public class CounterServlet extends HttpServlet {
