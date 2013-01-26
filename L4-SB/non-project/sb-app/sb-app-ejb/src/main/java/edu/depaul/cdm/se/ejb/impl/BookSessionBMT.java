@@ -17,12 +17,12 @@ import javax.transaction.UserTransaction;
 @LocalBean
 @TransactionManagement(TransactionManagementType.BEAN)
 public class BookSessionBMT {
-
-    @PersistenceContext(unitName = "se554PU")
+    @PersistenceContext(unitName="sb-demoPU")
     private EntityManager em;
+    
     @Resource
     private UserTransaction ut;
-
+    
     public List<Book> getAllBooks() {
 //        EntityManagerFactory emf = Persistence.createEntityManagerFactory("sb-demoPU");
 //        EntityManager em = emf.createEntityManager();
@@ -31,9 +31,9 @@ public class BookSessionBMT {
 
     public Book findBook(Long bookId) {
         return em.createNamedQuery("Book.findById", Book.class).
-                setParameter("id", bookId).getSingleResult();
+                    setParameter("id", bookId).getSingleResult();
     }
-
+    
     public Book createBook(Book book) {
         try {
             ut.begin();
