@@ -9,6 +9,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
 
+/**
+ * Example to go along with SB App to demonstrate the difference between
+ * Stateless Session Bean and Stateful Session Bean
+ * 
+ * Notice that SFSB always end with count of 2 whereas SLSB keep increasing count
+ */
 public class App implements Runnable 
 {
     public static void main( String[] args ) throws Exception
@@ -28,7 +34,6 @@ public class App implements Runnable
             sfCounter.increment();
             slCounter.increment();
             sfCounter.increment();
-            
             String name = Thread.currentThread().getName();
             System.out.println(name + ": Stateless: " + slCounter.count());
             System.out.println(name + ": Stateful: " + sfCounter.count());
