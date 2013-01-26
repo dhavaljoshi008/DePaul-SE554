@@ -1,12 +1,13 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package edu.depaul.cdm.se.servlet.ejb;
 
-import edu.depaul.cdm.se.ejb.impl.StatefulCounter;
-import edu.depaul.cdm.se.ejb.impl.StatelessCounter;
 import edu.depaul.cdm.se.sbejb.IStatefulCounter;
 import edu.depaul.cdm.se.sbejb.IStatelessCounter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.ejb.EJB;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -18,16 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * Demo stateless vs stateful session
+ * @author ubuntu
  */
-@WebServlet(name = "CounterServlet", urlPatterns = {"/CounterServlet"})
-public class CounterServlet extends HttpServlet {
-
-    @EJB
-    private IStatelessCounter instanceSLCounter;
-    
-    @EJB
-    private IStatefulCounter instanceSFCounter;
+@WebServlet(name = "InstanceCounterServlet", urlPatterns = {"/InstanceCounterServlet"})
+public class InstanceCounterServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -44,12 +39,24 @@ public class CounterServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        instanceSLCounter.increment();
-        instanceSFCounter.increment();
+        final String sfLookupKey = "java:global/edu.depaul.cdm.se_sb-app-ear_ear_1.5-SNAPSHOT/sb-app-ejb-1.5-SNAPSHOT/StatefulCounter";
+        final String slLookupKey = "java:global/edu.depaul.cdm.se_sb-app-ear_ear_1.5-SNAPSHOT/sb-app-ejb-1.5-SNAPSHOT/StatelessCounter";
 
-        out.println("<h1>Servlet CounterServlet at " + request.getContextPath() + "</h1>");
-        out.println("<h2>StatelessCounter:" + instanceSLCounter.count() + "</h2>");
-        out.println("<h2>StatefulCounter:" + instanceSFCounter.count() + "</h2>");
+        try {
+            Context context = new InitialContext();
+            IStatelessCounter statelessCounter = (IStatelessCounter) context.lookup(slLookupKey);
+            IStatefulCounter statefulCounter = (IStatefulCounter) context.lookup(sfLookupKey);
+
+            statefulCounter.increment();
+            statelessCounter.increment();
+
+            out.println("<h1>Servlet InstanceCounterServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h2>StatelessCounter:" + statelessCounter.count() + "</h2>");
+            out.println("<h2>StatefulCounter:" + statefulCounter.count() + "</h2>");
+        } catch (NamingException ne) {
+            ne.printStackTrace();
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

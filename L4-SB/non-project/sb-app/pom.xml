@@ -10,5 +10,6 @@
     <module>sb-app-ear</module>
     <module>sb-app-ejb</module>
     <module>sb-app-web</module>
+    <module>sb-app-remote</module>
   </modules>
 </project>

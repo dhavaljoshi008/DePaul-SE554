@@ -9,7 +9,6 @@
 
     <groupId>edu.depaul.cdm.se</groupId>
     <artifactId>sb-app-ejb</artifactId>
-    <version>1.5-SNAPSHOT</version>
     <packaging>ejb</packaging>
 
     <name>sb-app-ejb</name>
@@ -35,8 +34,8 @@
         <dependency>
             <groupId>edu.depaul.cdm.se</groupId>
             <artifactId>sb-app-remote</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+            <version>1.5-SNAPSHOT</version>
+        </dependency>        
     </dependencies>
 
     <build>

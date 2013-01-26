@@ -9,7 +9,6 @@
 
   <groupId>edu.depaul.cdm.se</groupId>
   <artifactId>sb-app-ear</artifactId>
-  <version>1.5-SNAPSHOT</version>
   <packaging>ear</packaging>
 
   <name>sb-app-ear</name>
