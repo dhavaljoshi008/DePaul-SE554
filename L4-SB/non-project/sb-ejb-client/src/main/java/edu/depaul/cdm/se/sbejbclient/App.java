@@ -28,18 +28,35 @@ public class App implements Runnable
     
     public void run() {
         try {
-            IStatelessCounter slCounter = lookupStatelessCounter();
-            IStatefulCounter sfCounter = lookupStatefulCounter();
-            slCounter.increment();
-            sfCounter.increment();
-            slCounter.increment();
-            sfCounter.increment();
-            String name = Thread.currentThread().getName();
-            System.out.println(name + ": Stateless: " + slCounter.count());
-            System.out.println(name + ": Stateful: " + sfCounter.count());
+            statelessCounter();
+            // statefulCounter();
         } catch (NamingException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    /**
+     * Stateful counter
+     * @throws NamingException 
+     */
+    private void statefulCounter() throws NamingException {
+        IStatefulCounter counter = lookupStatefulCounter();
+        counter.increment();
+        counter.increment();
+        String threadName = Thread.currentThread().getName();
+        System.out.println(threadName + ": Stateful: " + counter.count());
+    }
+    
+    /**
+     * Stateless counter
+     * @throws NamingException 
+     */
+    private void statelessCounter() throws NamingException {
+        IStatelessCounter counter = lookupStatelessCounter();
+        counter.increment();
+        counter.increment();
+        String threadName = Thread.currentThread().getName();
+        System.out.println(threadName + ": Stateless: " + counter.count());
     }
     
     private IStatefulCounter lookupStatefulCounter() throws NamingException{
@@ -47,6 +64,7 @@ public class App implements Runnable
 
         return (IStatefulCounter) new InitialContext().lookup(sfLookupKey); 
     }
+    
     private IStatelessCounter lookupStatelessCounter() throws NamingException{
         final String slLookupKey = "java:global/edu.depaul.cdm.se_sb-app-ear_ear_1.5-SNAPSHOT/sb-app-ejb-1.5-SNAPSHOT/StatelessCounter";
 
