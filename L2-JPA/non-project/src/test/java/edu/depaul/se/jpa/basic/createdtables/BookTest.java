@@ -50,4 +50,19 @@ public class BookTest extends AbstractJPATest{
         assertEquals(afterCount + 1, priorCount);
     }
     
+    @Test
+    public void testBookService() {
+        Book book = new Book();
+        book.setTitle("Beginning Java Persistence");
+        
+        BookService service = new BookService();
+        service.saveBook(book);
+        assertNotNull("ID should have been generated and populated after persist", 
+                book.getId());
+        
+        List<Book> books = service.getAllBooks(); 
+        assertEquals(1, books.size());
+    }
+    
+    
 }
