@@ -10,7 +10,7 @@ public class SecureCounter implements ISecureCounter {
     private int counter = 0;
     
     @Override
-    @RolesAllowed({"ADMIN"})
+    @RolesAllowed({"admin"})
     public void increment() {
         counter++;
     }
