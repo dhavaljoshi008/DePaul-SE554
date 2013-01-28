@@ -11,7 +11,6 @@ import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 
 @Stateless
-@DeclareRoles("admin")
 public class CalculatorBean {
     @EJB
     private Logger logger;
