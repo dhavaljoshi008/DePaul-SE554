@@ -15,10 +15,6 @@
 
     <login-config>
         <auth-method>BASIC</auth-method>
-        <form-login-config>
-            <form-login-page>/WEB-INF/login.jsp</form-login-page>
-            <form-error-page>/WEB-INF/login.jsp?auth-error=1</form-error-page>
-        </form-login-config>
     </login-config>
 
   
@@ -60,9 +56,6 @@
     </security-role>
     <security-role>
         <role-name>user</role-name>
-    </security-role>
-    <security-role>
-        <role-name>default</role-name>
     </security-role>
    
     <session-config>

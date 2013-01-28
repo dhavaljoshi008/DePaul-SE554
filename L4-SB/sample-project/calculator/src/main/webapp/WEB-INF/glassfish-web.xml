@@ -4,12 +4,8 @@
   <context-root>calculator</context-root>
   <!-- role mapping -->
   <security-role-mapping>
-    <role-name>USER</role-name>
-    <group-name>USER</group-name>
-  </security-role-mapping>
-  <security-role-mapping>
-    <role-name>DEFAULT</role-name>
-    <group-name>DEFAULT</group-name>
+    <role-name>user</role-name>
+    <group-name>user</group-name>
   </security-role-mapping>
   <security-role-mapping>
     <role-name>admin</role-name>
