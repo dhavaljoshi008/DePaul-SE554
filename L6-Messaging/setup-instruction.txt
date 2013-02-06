@@ -1,6 +1,3 @@
-!!! Warning !!!
-Need JDK 7
-
 I)  Glassfish setup
 Need to define GlassfishClient to point to %glassfish-3.1.1_installation_directory%\glassfish\lib\gf-client.jar
 
