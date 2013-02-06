@@ -1,5 +1,7 @@
 !!! Warning !!!
 Need JDK 7
+
+I)  Glassfish setup
 Need to define GlassfishClient to point to %glassfish-3.1.1_installation_directory%\glassfish\lib\gf-client.jar
 
 To run these examples you must have GlassFish running and create the following administered objects :
@@ -27,3 +29,18 @@ If you need to empty a destination (flush all messages), this is what you need t
 to validate queues have been created
 > asadmin use list-jms-resources       
 delete-jms-resource command to validate
+
+II)  JBoss setup
+start server with full configuration
+>>> standalone.bat -c standalone-full.xml
+
+start client
+>>> jboss-cli --conect
+
+Add Queue
+>>>	jms-queue add --queue-address=myQueue --entries=jms/javaee6/Queue
+>>> jms-queue add --queue-address=myQueue --entries=jms/javaee6/CalculatorQ
+>>> jms-queue add --queue-address=myQueue --entries=jms/javaee6/transferFundsQ
+
+Add Topic
+>>> jms-topic add --topic-address=testTopic --entries=jms/javaee6/Topic
