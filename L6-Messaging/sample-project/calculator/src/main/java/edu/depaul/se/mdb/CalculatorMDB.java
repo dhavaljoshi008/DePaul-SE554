@@ -16,7 +16,6 @@ import javax.xml.bind.Unmarshaller;
 
 @MessageDriven(mappedName = "jms/javaee6/CalculatorQ",
 activationConfig = {
-    @ActivationConfigProperty(propertyName="connectionFactoryJndiName",propertyValue="QCF"),
     @ActivationConfigProperty(
      propertyName = "destinationType", propertyValue = "javax.jms.Queue")})
 public class CalculatorMDB implements MessageListener {
