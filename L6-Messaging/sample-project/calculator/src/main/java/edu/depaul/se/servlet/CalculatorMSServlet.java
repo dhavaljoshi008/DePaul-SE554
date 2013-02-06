@@ -19,16 +19,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import static edu.depaul.se.xml.CalculatorRequest.CalculatorOperation;
 
 @WebServlet("/CalculatorMSServlet")
 public class CalculatorMSServlet extends HttpServlet {
 
-    @Resource(mappedName = "jms/CalculatorQ")
+    @Resource(mappedName = "jms/javaee6/CalculatorQ")
     private Queue queue;
-    @Resource(mappedName = "jms/QueueConnectionFactory")
+    @Resource(mappedName = "jms/javaee6/ConnectionFactory")    
     private QueueConnectionFactory queueConnectionFactory;
 
     /**
@@ -104,7 +103,7 @@ public class CalculatorMSServlet extends HttpServlet {
             out.println(" will be handled later");
             out.println("</html>");
 
-        } catch (JMSException | JAXBException e) {
+        } catch (Exception  e) {
             out.println("<html>");
             out.println("<h1>");
             out.println("Error processing request: " + e.toString());
