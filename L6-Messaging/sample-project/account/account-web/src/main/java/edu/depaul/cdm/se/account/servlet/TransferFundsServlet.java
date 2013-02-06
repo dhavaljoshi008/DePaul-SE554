@@ -20,9 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "TransferFundsServlet", urlPatterns = {"/TransferFunds"})
 public class TransferFundsServlet extends HttpServlet {
 
-    @Resource(mappedName = "jms/transferFundsQ")
+    @Resource(mappedName = "jms/javaee6/transferFundsQ")
     private Queue queue;
-    @Resource(mappedName = "jms/QueueConnectionFactory")
+    @Resource(mappedName = "jms/javaee6/ConnectionFactory")
     private QueueConnectionFactory queueConnectionFactory;
 
     /**
