@@ -41,3 +41,5 @@ Add Queue
 
 Add Topic
 >>> jms-topic add --topic-address=testTopic --entries=jms/javaee6/Topic
+
+http://stackoverflow.com/questions/7515220/how-to-get-the-new-jndi-names-esp-connectionfactory
