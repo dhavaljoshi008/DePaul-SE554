@@ -29,3 +29,13 @@
 /L1-javapersistence/target/
 /L7-SOAP/non-project/SOAP/target/
 /L7-SOAP/non-project/SOAP-client/target/
+/L4-SB/non-project/sb-app/sb-app-remote/target/
+/L4-SB/non-project/sb-app/sb-app-ejb/target/
+/L4-SB/non-project/sb-app/sb-app-web/target/
+/L4-SB/non-project/sb-app/sb-app-ear/target/
+/L4-SB/non-project/sb-ejb-client/target/
+/L4-SB/sample-project/account/account-remote/target/
+/L4-SB/sample-project/account/account-web/target/
+/L4-SB/sample-project/account/account-ejb/target/
+/L4-SB/sample-project/account/account-ear/target/
+/L4-SB/sample-project/calculator/target/
