@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "DepositAccountServlet", urlPatterns = {"/WithdrawAccount"})
+@WebServlet(name = "WithdrawAccountServlet", urlPatterns = {"/WithdrawAccount"})
 public class WithdrawAccountServlet extends HttpServlet {
     @EJB
     private AccountServiceRemote accountService;
