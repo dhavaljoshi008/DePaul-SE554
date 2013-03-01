@@ -2,15 +2,11 @@ package edu.depaul.cdm.se.account.servlet;
 
 import edu.depaul.cdm.se.account.service.AccountServiceRemote;
 import java.io.*;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import javax.persistence.PersistenceUnit;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityManager;
 
 /**
  * The servlet class to list Accounts from database
