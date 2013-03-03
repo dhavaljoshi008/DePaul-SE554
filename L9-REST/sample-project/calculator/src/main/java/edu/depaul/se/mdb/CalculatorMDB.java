@@ -14,7 +14,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-@MessageDriven(mappedName = "jms/CalculatorQ",
+@MessageDriven(mappedName = "jms/javaee6/CalculatorQ",
 activationConfig = {
     @ActivationConfigProperty(
      propertyName = "destinationType", propertyValue = "javax.jms.Queue")})
