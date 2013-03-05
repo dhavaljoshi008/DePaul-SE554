@@ -12,4 +12,7 @@
                 <li><a href="webresources/application.wadl">WADL</a></li>            
     <li><a href="webresources/greetings/usingpath/Davy">Path</a></li>
     <li><a href="webresources/greetings/usingquery?name=Davy">Query</a></li>
+    <br>
+    <li><a href="soap.html">SOAP</a>
+    <li><a href="json.html">JSON</a>
 </html>
