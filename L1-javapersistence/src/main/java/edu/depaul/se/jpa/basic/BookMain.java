@@ -19,16 +19,13 @@ public class BookMain {
         em = emf.createEntityManager();
         main.createExample();
         main.findEntity();
-//        main.updateExample();
-//        main.deleteExample();
+        main.updateExample();
+        main.deleteExample();
         em.close();
         emf.close();
     }
 
     private void createExample() {
-//        emf = Persistence.createEntityManagerFactory("jpa-demoPU");
-//        em = emf.createEntityManager();
-        
         Book book = new Book();
         book.setTitle("Beginning Java Persistence");
         book.setPrice((float) 49.99);
@@ -47,14 +44,9 @@ public class BookMain {
                 em.createNamedQuery("findAllBooks").getResultList();
         
         System.out.println("Number of rows: " + books.size());
-
-//        em.close();
-//        emf.close();
     }
     
     private void updateExample() {
-//        emf = Persistence.createEntityManagerFactory("jpa-demoPU");
-//        em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         Book book = em.find(Book.class, new Long(1));
@@ -65,13 +57,9 @@ public class BookMain {
         List<Book> books = 
                 em.createNamedQuery("findAllBooks").getResultList();
         System.out.println(books.get(0));
-//        em.close();
-//        emf.close();
     }
     
     private void deleteExample() {
-//        emf = Persistence.createEntityManagerFactory("jpa-demoPU");
-//        em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         Book book = em.find(Book.class, new Long(1));
@@ -83,14 +71,9 @@ public class BookMain {
                 em.createNamedQuery("findAllBooks").getResultList();
         System.out.print("After delete number of rows remaining is: ");
         System.out.println(books.size());
-//        em.close();
-//        emf.close();
     }
     
     private void findEntity() {
-        // 1. Acquire Entity Manager 
-        //EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa-demoPU");
-        //EntityManager em = emf.createEntityManager();
         
         // 2a.  Find the entity via primary key, auto configured
         Book book = em.find(Book.class, new Long(1));
@@ -99,14 +82,9 @@ public class BookMain {
         List<Book> books = 
                 em.createNamedQuery("findAllBooks").getResultList();
         
-        // 3.  Clean up
-        //em.close();
-        //emf.close();
     }
     
     private void deleteEntity() {
-        //EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa-demoPU");
-        //EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         Book book = em.find(Book.class, new Long(1));
@@ -118,8 +96,6 @@ public class BookMain {
                 em.createNamedQuery("findAllBooks").getResultList();
         System.out.print("After delete number of rows remaining is: ");
         System.out.println(books.size());
-        //em.close();
-        //emf.close();
     }
     
 }

@@ -1,6 +1,5 @@
 package edu.depaul.se.jpa.basic;
 
-import edu.depaul.se.jdbc.basic.BookDAO;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -108,10 +107,6 @@ public class BookTest {
 
         int afterCount = em.createNamedQuery("findAllBooks").getResultList().size();
 
-        assertEquals(afterCount + 1, priorCount);
-        
-        BookDAO dao = new BookDAO();
-        int countFromJDBC = dao.getAllBooks().size();
-        assertEquals(afterCount, countFromJDBC);
+        assertEquals(++afterCount, priorCount);
     }
 }
