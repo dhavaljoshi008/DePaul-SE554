@@ -50,12 +50,6 @@ public class PurchaseOrder implements Serializable {
     private BigDecimal shippingCost;
     @Column(name = "FREIGHT_COMPANY")
     private String freightCompany;
-    /*
-    @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")
-    @ManyToOne(optional = false)
-    private Product productId;
-     
-     */
 
     public PurchaseOrder() {
     }
@@ -103,17 +97,6 @@ public class PurchaseOrder implements Serializable {
     public void setFreightCompany(String freightCompany) {
         this.freightCompany = freightCompany;
     }
-
-    /*
-    public Product getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Product productId) {
-        this.productId = productId;
-    }
-     
-     */
 
     public Customer getCustomerId() {
         return customerId;

@@ -1,14 +1,10 @@
 package edu.depaul.se.jpa.basic.existingtables;
 
-import java.util.Hashtable;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 import javax.persistence.*;
-import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,7 +13,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Since tables are already defined as part of sample installation
+ * Since tables are already defined as part of sample installation in NetBeans
  * <p>
  * Table Generation Strategy is set to None
  * <p>

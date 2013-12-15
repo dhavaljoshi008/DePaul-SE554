@@ -2,12 +2,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>advanced-jpa</artifactId>
+    <artifactId>adv-db</artifactId>
     <packaging>jar</packaging>
-    <name>Adv-Persistence</name>
-    <description>java persistence</description>
-    <groupId>edu.depaul.cdm.se</groupId>
-    <version>1.0.0</version>
+    <name>adv-db</name>
+    <description>java persistence sample</description>
+    <groupId>edu.depaul.cdm.se554</groupId>
+    <version>2.0.0</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
 
     <repositories>
         <repository>
@@ -23,63 +28,24 @@
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb-j5</artifactId>
             <version>2.2.4</version>
+            <scope>runtime</scope>
         </dependency>
+        <!-- Needed for viewing sample database -->
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derbyclient</artifactId>
-            <version>10.9.1.0</version>
+            <version>10.10.1.1</version>
             <scope>runtime</scope>
-        </dependency>
+        </dependency>        
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>javax.persistence</artifactId>
-            <version>2.0.0</version>
+            <version>2.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
-            <version>2.0.2</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.transaction</groupId>
-            <artifactId>transaction-api</artifactId>
-            <version>1.1-rev-1</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>3.6.7.Final</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-api</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.6.1</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-tools</artifactId>
-            <version>3.2.0.ga</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>3.12.1.GA</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>3.6.7.Final</version>
+            <version>2.5.1</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -105,6 +71,15 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+             <plugin>
                 <!-- Excluding SelectorTest just because it requires database to be started -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -114,7 +89,7 @@
                         <exclude>**/SelectorTest.java</exclude>
                     </excludes>
                 </configuration>
-            </plugin>            
+            </plugin>                
         </plugins>
     </build>
 </project>
