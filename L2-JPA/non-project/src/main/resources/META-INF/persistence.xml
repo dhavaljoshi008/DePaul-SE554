@@ -17,19 +17,30 @@
         <class>edu.depaul.se.jpa.basic.createdtables.onetableperconcrete.C_SalaryEmployee</class>
         
         <properties>
+            <!-- in memory database just to see the application quickly work -->
             <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:."/>     
-            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="javax.persistence.jdbc.user" value=""/>
-            <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
+            
+            <!-- to view the database table especially for inheritence example
+                , be sure to create se554 database 
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/se554"/>
+            <property name="javax.persistence.jdbc.user" value="app"/>
+            <property name="javax.persistence.jdbc.password" value="app"/>
+            -->
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            
+            <!--
+                Using logging level of FINE to show SQL, see 
+                    http://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging    
+            -->
+            <property name="eclipselink.logging.level" value="FINE"/>
         </properties>
-        <!--
-            Using logging level of FINE to show SQL, see 
-                http://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging    
-        -->
-        <property name="eclipselink.logging.level" value="FINE"/>
     </persistence-unit>
-    <!-- Persistence Unit that uses existing table -->
+    
+    
+    <!-- Persistence Unit that uses existing table that is part of Derby installation -->
     <persistence-unit name="existingTablePU" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>edu.depaul.se.jpa.basic.existingtables.Customer</class>
@@ -39,12 +50,12 @@
             <property name="javax.persistence.jdbc.password" value="app"/>
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
             <property name="javax.persistence.jdbc.user" value="app"/>
+            <!--
+                Using logging level of FINE to show SQL, see 
+                    http://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging    
+            -->
+            <property name="eclipselink.logging.level" value="FINE"/>
         </properties>
-        <!--
-            Using logging level of FINE to show SQL, see 
-                http://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging    
-        -->
-        <property name="eclipselink.logging.level" value="FINE"/>
     </persistence-unit>
     
 </persistence>
