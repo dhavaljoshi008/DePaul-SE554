@@ -7,7 +7,6 @@
         <version>1.0.1</version>
     </parent>
 
-    <groupId>edu.depaul.cdm.se</groupId>
     <artifactId>account-ear</artifactId>
     <packaging>ear</packaging>
 
