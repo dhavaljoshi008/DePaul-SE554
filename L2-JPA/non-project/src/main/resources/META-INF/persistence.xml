@@ -29,7 +29,7 @@
             <property name="javax.persistence.jdbc.user" value="app"/>
             <property name="javax.persistence.jdbc.password" value="app"/>
             -->
-            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             
             <!--
                 Using logging level of FINE to show SQL, see 
