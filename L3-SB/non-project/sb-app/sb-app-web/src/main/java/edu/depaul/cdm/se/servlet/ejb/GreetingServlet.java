@@ -5,6 +5,7 @@ import edu.depaul.cdm.se.ejb.RGreeterBeanRemote;
 import edu.depaul.cdm.se.ejb.impl.SimpleGreeterBean;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,14 +43,15 @@ public class GreetingServlet extends HttpServlet {
             out.println("<title>Servlet GreetingServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet GreetingServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h1>Servlet GreetingServlet at " + remoteGreeter.greetMe("Paul") + "</h1>");
-            out.println("<h1>Servlet GreetingServlet at " + localGreeter.greetMe("Ringo") + "</h1>");
+            out.println("<h1>Servlet GreetingServlet at " + new Date() + " " + request.getContextPath() + "</h1>");
             out.println("<h1>Servlet GreetingServlet at " + greeter.greetMe("John") + "</h1>");
+            out.println("<h1>Servlet GreetingServlet at " + localGreeter.greetMe("Ringo") + "</h1>");
+            out.println("<h1>Servlet GreetingServlet at " + remoteGreeter.greetMe("Paul") + "</h1>");
             out.println("</body>");
             out.println("</html>");
-        } finally {            
-            out.close();
+        } finally {       
+            // can't close this given this is called from JSP and causes problems for JSP
+            // out.close();
         }
     }
 
