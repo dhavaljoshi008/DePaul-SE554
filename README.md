@@ -1,4 +1,10 @@
 DePaul-SE554
 ============
 
-Code repository 11/10/2012 - After fall quarter
+This is sample code associated with DePaul SE554 (http://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=SE&CatalogNbr=554) by yours truely.
+
+For Windows https://help.github.com/articles/set-up-git
+
+Eclipse eGit plugin help http://wiki.eclipse.org/EGit/Learning_Material
+
+Works with Netbeans and Glassfish4
