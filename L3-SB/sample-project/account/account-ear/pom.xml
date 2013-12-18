@@ -4,54 +4,45 @@
   <parent>
     <artifactId>account</artifactId>
     <groupId>edu.depaul.cdm.se</groupId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
   </parent>
 
-  <groupId>edu.depaul.cdm.se</groupId>
-  <artifactId>account-ear</artifactId>
-  <version>2.0.0</version>
-  <packaging>ear</packaging>
+    <artifactId>account-ear</artifactId>
+    <packaging>ear</packaging>
 
-  <name>account-ear</name>
+    <name>account-ear</name>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-ear-plugin</artifactId>
-        <version>2.6</version>
-        <configuration>
-            <version>6</version>
-            <defaultLibBundleDir>lib</defaultLibBundleDir>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
     <dependencies>
         <dependency>
             <groupId>edu.depaul.cdm.se</groupId>
             <artifactId>account-ejb</artifactId>
-            <version>2.0.0</version>
+            <version>2.0.1</version>
             <type>ejb</type>
         </dependency>
         <dependency>
             <groupId>edu.depaul.cdm.se</groupId>
             <artifactId>account-web</artifactId>
-            <version>2.0.0</version>
+            <version>2.0.1</version>
             <type>war</type>
         </dependency>
+        <dependency>
+            <groupId>edu.depaul.cdm.se</groupId>
+            <artifactId>account-remote</artifactId>
+            <version>2.0.1</version>
+        </dependency>  
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <defaultJavaBundleDir>lib/</defaultJavaBundleDir>
+                    <skinnyWars>true</skinnyWars>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+  
+
 </project>
