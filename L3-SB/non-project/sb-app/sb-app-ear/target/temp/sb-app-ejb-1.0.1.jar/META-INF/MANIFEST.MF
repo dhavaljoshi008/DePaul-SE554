@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: lib/sb-app-remote-1.0.1.jar
-Build-Jdk: 1.7.0_45
-Built-By: kenyu
-Created-By: Apache Maven
-Archiver-Version: Plexus Archiver
-
