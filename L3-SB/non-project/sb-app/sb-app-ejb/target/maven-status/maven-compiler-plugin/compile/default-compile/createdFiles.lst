@@ -1,0 +1,4 @@
+edu/depaul/cdm/se/ejb/impl/SimpleGreeterBean.class
+edu/depaul/cdm/se/ejb/LGreeterBeanLocal.class
+edu/depaul/cdm/se/ejb/impl/LGreeterBean.class
+edu/depaul/cdm/se/ejb/impl/RGreeterBean.class
