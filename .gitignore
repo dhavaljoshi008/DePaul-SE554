@@ -1,5 +1,11 @@
 target/
 
+# Ignore eclipse configuration files
+.settings/
+.project
+.classpath
+
+# Ignore compiled or gnerated
 *.class
 
 # Package Files #
