@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "GreetingServlet", urlPatterns = {"/GreetingServlet"})
 public class GreetingServlet extends HttpServlet {
-    @EJB
-    private RGreeterBeanRemote remoteGreeter;
+    //@EJB
+    //private RGreeterBeanRemote remoteGreeter;
 
     @EJB
     private LGreeterBeanLocal localGreeter;
@@ -46,7 +46,7 @@ public class GreetingServlet extends HttpServlet {
             out.println("<h1>Servlet GreetingServlet at " + new Date() + " " + request.getContextPath() + "</h1>");
             out.println("<h1>Servlet GreetingServlet at " + greeter.greetMe("John") + "</h1>");
             out.println("<h1>Servlet GreetingServlet at " + localGreeter.greetMe("Ringo") + "</h1>");
-            out.println("<h1>Servlet GreetingServlet at " + remoteGreeter.greetMe("Paul") + "</h1>");
+  //          out.println("<h1>Servlet GreetingServlet at " + remoteGreeter.greetMe("Paul") + "</h1>");
             out.println("</body>");
             out.println("</html>");
         } finally {       
