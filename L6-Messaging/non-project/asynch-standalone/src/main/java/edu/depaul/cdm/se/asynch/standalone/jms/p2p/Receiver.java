@@ -8,8 +8,8 @@ public class Receiver {
 
     public static void main(String[] args) throws Exception {
         Context jndiContext = new InitialContext();
-        ConnectionFactory connectionFactory = (ConnectionFactory) jndiContext.lookup("jms/javaee6/ConnectionFactory");
-        Queue queue = (Queue) jndiContext.lookup("jms/javaee6/Queue");
+        ConnectionFactory connectionFactory = (ConnectionFactory) jndiContext.lookup("jms/ConnectionFactory");
+        Queue queue = (Queue) jndiContext.lookup("jms/Queue");
 
         Connection connection = connectionFactory.createConnection();
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);

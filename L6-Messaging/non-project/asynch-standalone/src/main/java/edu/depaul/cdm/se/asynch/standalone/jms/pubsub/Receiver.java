@@ -13,8 +13,8 @@ public class Receiver {
      public static void main(String[] args) throws Exception {
         Context jndiContext = new InitialContext();
         ConnectionFactory connectionFactory = (ConnectionFactory) 
-                    jndiContext.lookup("jms/javaee6/ConnectionFactory");
-        Topic topic = (Topic) jndiContext.lookup("jms/javaee6/Topic");
+                    jndiContext.lookup("jms/ConnectionFactory");
+        Topic topic = (Topic) jndiContext.lookup("jms/Topic");
         
         Connection connection = connectionFactory.createConnection();
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
