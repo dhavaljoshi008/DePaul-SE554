@@ -43,15 +43,10 @@ public class CalculatorMDB implements MessageListener {
             }
 
             if (message.getJMSReplyTo() == null) {
-                System.out.println(c.getLhs() + " " + c.getOperator() + " " + c.getRhs() + " = " + result);
-//            } else {
-//                Session session = connectionFactory.createConnection().createSession(true, Session.AUTO_ACKNOWLEDGE);
-//                MessageProducer producer = session.createProducer(message.getJMSReplyTo());
-//                TextMessage reply = session.createTextMessage("Calculator result: " + result);
-//                producer.send(reply);
+                logger.log(Level.INFO, "{0} {1} {2} = {3}", new Object[]{c.getLhs(), c.getOperator(), c.getRhs(), result});
             }
         } catch (JMSException ex) {
-            Logger.getLogger(CalculatorMDB.class.getName()).log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, null, ex);
         }
 
     }
@@ -63,18 +58,16 @@ public class CalculatorMDB implements MessageListener {
      * @return
      */
     private CalculatorRequest convert(String xml) {
-        StringReader reader = null;
         CalculatorRequest c = null;
 
         try {
             JAXBContext context = JAXBContext.newInstance(CalculatorRequest.class);
             Unmarshaller m = context.createUnmarshaller();
-            reader = new StringReader(xml);
-            c = (CalculatorRequest) m.unmarshal(reader);
+            try (StringReader reader = new StringReader(xml)) {
+                c = (CalculatorRequest) m.unmarshal(reader);
+            }
         } catch (JAXBException ex) {
             Logger.getLogger(CalculatorMDB.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            reader.close();
         }
 
         return c;
