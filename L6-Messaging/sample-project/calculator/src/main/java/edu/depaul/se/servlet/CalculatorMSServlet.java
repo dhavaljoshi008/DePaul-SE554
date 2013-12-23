@@ -25,9 +25,9 @@ import static edu.depaul.se.xml.CalculatorRequest.CalculatorOperation;
 @WebServlet("/CalculatorMSServlet")
 public class CalculatorMSServlet extends HttpServlet {
 
-    @Resource(mappedName = "jms/javaee6/CalculatorQ")
+    @Resource(mappedName = "jms/CalculatorQ")
     private Queue queue;
-    @Resource(mappedName = "jms/javaee6/ConnectionFactory")    
+    @Resource(mappedName = "jms/ConnectionFactory")    
     private QueueConnectionFactory queueConnectionFactory;
 
     /**

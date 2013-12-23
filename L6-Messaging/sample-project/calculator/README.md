@@ -1,4 +1,4 @@
-JEE6 Calculator
+JEE Calculator
 
 Tested using
 
