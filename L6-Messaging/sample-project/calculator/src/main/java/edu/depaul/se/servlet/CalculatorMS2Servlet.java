@@ -1,41 +1,53 @@
 package edu.depaul.se.servlet;
 
-import edu.depaul.se.calculator.business.CalculatorBean;
-import edu.depaul.se.calculator.DivideByZeroException;
+import edu.depaul.se.xml.CalculatorRequest;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.ejb.EJB;
+import java.io.StringWriter;
+import javax.annotation.Resource;
+import javax.inject.Inject;
+import javax.jms.Destination;
+import javax.jms.JMSContext;
+import javax.jms.JMSProducer;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
-@WebServlet(name = "CalculatorSBServlet", urlPatterns = {"/CalculatorSBServlet"})
-public class CalculatorSBServlet extends HttpServlet {
+@WebServlet(name = "CalculatorMS2Servlet", urlPatterns = {"/CalculatorMS2Servlet"})
+public class CalculatorMS2Servlet extends HttpServlet {
+    @Inject
+    private JMSContext jmsContext;
 
-    @EJB
-    private CalculatorBean calculator;
-    
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+    @Resource(mappedName = "jms/CalculatorQ")
+    private Destination calcQ;
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+
         try {
             String lhs = request.getParameter("lhs");
             String rhs = request.getParameter("rhs");
             char operator = request.getParameter("operator").charAt(0);
 
-            float lhsNum = 0;
-            float rhsNum = 0;
-            
+            int lhsNum = 0;
+            int rhsNum = 0;
+
             try {
                 lhsNum = Integer.parseInt(lhs);
                 rhsNum = Integer.parseInt(rhs);
@@ -46,39 +58,54 @@ public class CalculatorSBServlet extends HttpServlet {
                 out.println("</html>");
                 return;
             }
-            
-            StringBuilder result = new StringBuilder();
 
+
+            CalculatorRequest.CalculatorOperation operation;
+            // Send message
             if (operator == '+') {
-                result.append(calculator.add(lhsNum, rhsNum));
+                operation = CalculatorRequest.CalculatorOperation.ADD;
             } else if (operator == '-') {
-                result.append(calculator.subtract(lhsNum, rhsNum));
+                operation = CalculatorRequest.CalculatorOperation.SUBTRACT;
             } else if (operator == '*') {
-                result.append(calculator.multiply(lhsNum, rhsNum));
+                operation = CalculatorRequest.CalculatorOperation.MULTIPLY;
             } else {
-                try {
-                    result.append(calculator.divide(lhsNum, rhsNum));
-                } catch (DivideByZeroException ex) {
-                    result.append("Divide by zero error");
-                } 
+                operation = CalculatorRequest.CalculatorOperation.DIVIDE;
             }
 
-            String content = lhs + operator + rhs + "=" + result;
+            CalculatorRequest c = new CalculatorRequest(lhsNum, rhsNum, operation);
 
+            StringWriter writer = new StringWriter();
+
+
+            JAXBContext context = JAXBContext.newInstance(CalculatorRequest.class);
+            Marshaller m = context.createMarshaller();
+            m.marshal(c, writer);
+
+            String msg = writer.toString();
+            if (jmsContext == null) System.out.println("jmsContext is null");
+            JMSProducer producer = jmsContext.createProducer();
+            if (producer == null) System.out.println("producer is null");
+            jmsContext.createProducer().send(calcQ, msg);
             out.println("<html>");
-            out.println("<head>Calculator</head>");
-            out.print("<h1>");
-            out.println(content);
+            out.println("<h1>");
+            out.print("Message sent: ");
+            out.print(msg);
+            out.println(" will be handled later");
             out.println("</html>");
-        } finally { 
-            out.close();
+
+        } catch (JAXBException  e) {
+            out.println("<html>");
+            out.println("<h1>");
+            out.println("Error processing request: " + e.toString());
+            out.println("</html>");
+            throw new RuntimeException(e);
         }
-    } 
+
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP
-     * <code>GET</code> method.
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -92,8 +119,7 @@ public class CalculatorSBServlet extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP
-     * <code>POST</code> method.
+     * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -115,4 +141,5 @@ public class CalculatorSBServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }

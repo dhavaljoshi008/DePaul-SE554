@@ -24,10 +24,12 @@ public class CalculatorMDB implements MessageListener {
 
     public void onMessage(Message message) {
         // Based on the Calculator operator, call the appropriate method
+        
         CalculatorRequest c = null;
         try {
             c = convert(((TextMessage) message).getText());
-
+            System.out.println("Processing: " + c);
+            
             int result = 0;
             switch (c.getOperator()) {
                 case MULTIPLY:
