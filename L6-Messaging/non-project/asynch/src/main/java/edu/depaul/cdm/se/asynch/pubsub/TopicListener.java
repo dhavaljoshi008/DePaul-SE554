@@ -17,13 +17,14 @@ import javax.jms.TextMessage;
     @ActivationConfigProperty(propertyName = "subscriptionName", propertyValue = "TopicListener")
 })
 public class TopicListener implements MessageListener {
+    private static final Logger logger = Logger.getLogger(TopicListener.class.getName());
     @Override
     public void onMessage(Message message) {
         TextMessage textMessage = (TextMessage) message;
         try {
-            System.out.println("Message received: " + textMessage.getText());
+            logger.info(textMessage.getText());
         } catch (JMSException ex) {
-            Logger.getLogger(TopicListener.class.getName()).log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, null, ex);
         }
     }
 }

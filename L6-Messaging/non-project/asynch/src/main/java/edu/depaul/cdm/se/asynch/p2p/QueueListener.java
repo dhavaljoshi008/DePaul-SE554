@@ -16,18 +16,19 @@ import javax.jms.TextMessage;
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
 })
 public class QueueListener implements MessageListener {
+    private static final Logger logger = Logger.getLogger(QueueListener.class.getName());
 
     @EJB
     private SimpleGreeterBean greeter;
-    
+
     @Override
     public void onMessage(Message message) {
-        TextMessage textMessage = (TextMessage) message;
         try {
-            System.out.println("Message received: " + textMessage.getText());
-            System.out.println(greeter.greetMe(textMessage.getText()));
+            String msg = ((TextMessage) message).getText();
+            logger.log(Level.INFO, "Request.: {0}", new Object[]{msg});
+            logger.log(Level.INFO, "Response: {0}", new Object[]{greeter.greetMe(msg)});
         } catch (JMSException ex) {
-            Logger.getLogger(QueueListener.class.getName()).log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, null, ex);
         }
     }
 }

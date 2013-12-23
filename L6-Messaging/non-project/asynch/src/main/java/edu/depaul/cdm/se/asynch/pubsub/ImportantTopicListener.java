@@ -18,18 +18,16 @@ import javax.jms.TextMessage;
     @ActivationConfigProperty(propertyName = "subscriptionName", propertyValue = "ImportantTopicListener")
 })
 public class ImportantTopicListener implements MessageListener {
-    
-    public ImportantTopicListener() {
-    }
-    
+    private static final Logger logger = Logger.getLogger(ImportantTopicListener.class.getName());
+
     @Override
-    public void onMessage(Message message) {
-        TextMessage textMessage = (TextMessage) message;
+    public void onMessage(Message msg) {
+        TextMessage textMessage = (TextMessage) msg;
         try {
-        System.out.println(message.getJMSPriority());
-            System.out.println("This must be important message since I only care about important message: " 
-                    + textMessage.getText());
+            logger.info("ImportantTopicListener priority: " + msg.getJMSPriority());
+            logger.info(textMessage.getText());
         } catch (JMSException ex) {
-            Logger.getLogger(TopicListener.class.getName()).log(Level.SEVERE, null, ex);
-        }    }
+            logger.log(Level.SEVERE, null, ex);
+        }
+    }
 }
