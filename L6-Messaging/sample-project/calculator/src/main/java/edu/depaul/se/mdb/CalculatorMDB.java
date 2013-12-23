@@ -20,13 +20,14 @@ activationConfig = {
      propertyName = "destinationType", propertyValue = "javax.jms.Queue")})
 public class CalculatorMDB implements MessageListener {
 
-    Logger logger = Logger.getLogger("test");
+    private static final Logger logger = Logger.getLogger(CalculatorMDB.class.getName());
 
     public void onMessage(Message message) {
         // Based on the Calculator operator, call the appropriate method
         CalculatorRequest c = null;
         try {
             c = convert(((TextMessage) message).getText());
+            logger.finest(message.toString());
 
             int result = 0;
             switch (c.getOperator()) {
