@@ -11,7 +11,7 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
-@MessageDriven(mappedName = "jms/javaee6/Queue", activationConfig = {
+@MessageDriven(mappedName = "jms/Queue", activationConfig = {
     @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge"),
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
 })
