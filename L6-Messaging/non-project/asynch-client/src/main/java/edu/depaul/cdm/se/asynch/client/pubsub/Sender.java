@@ -17,8 +17,8 @@ public class Sender {
         
         // Looks up the administered objects
         ConnectionFactory connectionFactory = (ConnectionFactory) 
-                    jndiContext.lookup("jms/javaee6/ConnectionFactory");
-        Topic topic = (Topic) jndiContext.lookup("jms/javaee6/Topic");
+                    jndiContext.lookup("jms/ConnectionFactory");
+        Topic topic = (Topic) jndiContext.lookup("jms/Topic");
         
         // Connect to queue to send message
         Connection connection = connectionFactory.createConnection();

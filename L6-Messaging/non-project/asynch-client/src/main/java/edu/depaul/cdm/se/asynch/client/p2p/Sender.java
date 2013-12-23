@@ -17,8 +17,8 @@ public class Sender {
         Context jndiContext = new InitialContext();
 
         // Looks up the administered objects
-        ConnectionFactory connectionFactory = (ConnectionFactory) jndiContext.lookup("jms/javaee6/ConnectionFactory");
-        Queue queue = (Queue) jndiContext.lookup("jms/javaee6/Queue");
+        ConnectionFactory connectionFactory = (ConnectionFactory) jndiContext.lookup("jms/ConnectionFactory");
+        Queue queue = (Queue) jndiContext.lookup("jms/Queue");
 
         // Connect to queue to send message
         Connection connection = connectionFactory.createConnection();
@@ -61,8 +61,8 @@ public class Sender {
         Context jndiContext = new InitialContext();
 
         // Looks up the administered objects
-        ConnectionFactory connectionFactory = (ConnectionFactory) jndiContext.lookup("jms/javaee6/ConnectionFactory");
-        Queue queue = (Queue) jndiContext.lookup("jms/javaee6/Queue");
+        ConnectionFactory connectionFactory = (ConnectionFactory) jndiContext.lookup("jms/ConnectionFactory");
+        Queue queue = (Queue) jndiContext.lookup("jms/Queue");
 
         // Connect to queue to send message
         Connection connection = connectionFactory.createConnection();

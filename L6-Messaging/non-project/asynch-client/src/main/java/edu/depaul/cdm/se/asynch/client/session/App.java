@@ -14,7 +14,7 @@ public class App {
     }
 
     private void runRemote(Context context) throws Exception {
-        String jndiName = "java:global/edu.depaul.cdm.se_asynch_ejb_1.0-SNAPSHOT/AsynchGreetingsBean";
+        String jndiName = "java:global/asynch/AsynchGreetingsBean";
         GreeterBeanRemote bean = (GreeterBeanRemote) context.lookup(jndiName);
         Future<String> future = bean.greetMe("Dave");
 
