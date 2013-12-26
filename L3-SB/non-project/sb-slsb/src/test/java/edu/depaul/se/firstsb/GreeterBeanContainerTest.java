@@ -1,6 +1,5 @@
 package edu.depaul.se.firstsb;
 
-import java.util.logging.Logger;
 import javax.ejb.embeddable.EJBContainer;
 import javax.naming.Context;
 import org.junit.After;
