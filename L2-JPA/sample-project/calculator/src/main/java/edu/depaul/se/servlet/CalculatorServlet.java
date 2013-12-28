@@ -122,7 +122,7 @@ public class CalculatorServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    @PersistenceContext(unitName="se554PU")
+    @PersistenceContext(unitName="calculatorPU")
     private EntityManager em;
 
     @Resource
