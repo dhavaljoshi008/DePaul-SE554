@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 @LocalBean
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 public class Logger {
-    @PersistenceContext(unitName="se554PU")
+    @PersistenceContext(unitName="calculatorPU")
     private EntityManager em;
 
     public void log(String message) {
