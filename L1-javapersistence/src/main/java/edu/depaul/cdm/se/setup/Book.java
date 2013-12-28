@@ -1,4 +1,4 @@
-package edu.depaul.se.jpa.basic;
+package edu.depaul.cdm.se.setup;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -19,14 +19,9 @@ public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(length=2000)
-    private String description;
-    private Boolean illustrations;
-    private String isbn;
-    private Integer numofpages;
-    private Float price;
-    @Column(nullable=false)
+    @Column(length=2000, nullable = false)
     private String title;
+    private Float price;
 
     public Book() {
     }
@@ -46,38 +41,6 @@ public class Book implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public boolean containsIllustrations() {
-        return illustrations;
-    }
-
-    public void setIllustrations(boolean illustrations) {
-        this.illustrations = illustrations;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public Integer getNumofpages() {
-        return numofpages;
-    }
-
-    public void setNumofpages(Integer numofpages) {
-        this.numofpages = numofpages;
     }
 
     public Float getPrice() {
