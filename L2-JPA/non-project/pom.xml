@@ -2,9 +2,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>adv-db</artifactId>
+    <artifactId>persistence</artifactId>
     <packaging>jar</packaging>
-    <name>adv-db</name>
+    <name>persistence</name>
     <description>java persistence sample</description>
     <groupId>edu.depaul.cdm.se554</groupId>
     <version>2.0.0</version>
