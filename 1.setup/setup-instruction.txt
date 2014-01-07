@@ -13,5 +13,5 @@ To manage JDBC connection factories using the command-line utility from %gf_inst
 
 type the following 2 commands
 asadmin create-jdbc-connection-pool --datasourceclassname org.apache.derby.jdbc.ClientDataSource --restype javax.sql.XADataSource --property portNumber=1527:password=APP:user=APP:serverName=localhost:databaseName=SE554DB:connectionAttributes=\;create\\=true SE554Pool
-asadmin create-jdbc-resource –connectionpoolid SE554Pool jdbc/SE554
+asadmin create-jdbc-resource -–connectionpoolid SE554Pool jdbc/SE554
 
