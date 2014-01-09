@@ -1,4 +1,4 @@
-package edu.depaul.se.jpa.basic;
+package edu.depaul.se.jpa.basic.createdtables;
 
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -28,8 +28,6 @@ public class BookMain {
     private void createExample() {
         Book book = new Book();
         book.setTitle("Beginning Java Persistence");
-        book.setPrice((float) 49.99);
-        book.setIllustrations(false);
         
         EntityTransaction tx = em.getTransaction();
         tx.begin();
