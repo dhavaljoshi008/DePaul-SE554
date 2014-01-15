@@ -3,12 +3,12 @@ package edu.depaul.cdm.se.setup;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 @SessionScoped
 @Named
@@ -21,10 +21,9 @@ public class BookBean implements Serializable {
     public List<Book> getBookList() throws SQLException {
         logger.info("Before getting connection");
         
-        Query query = entityManager.createQuery("select b from Book b", Book.class);
-        List<Book> list =  query.getResultList();
+        List<Book> list = entityManager.createNamedQuery("findAllBooks").getResultList();
         
-        logger.info("Before returning: " + list.size());
+        logger.log(Level.INFO, "Before returning: {0}", list.size());
         
         return list;
     }
