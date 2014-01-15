@@ -1,45 +1,30 @@
 package edu.depaul.cdm.se.setup;
 
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.sql.DataSource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @SessionScoped
 @Named
 public class BookBean implements Serializable {
     private static final Logger logger = Logger.getLogger(BookBean.class.getName());
     
-    @Resource(name="jdbc/SE554")
-    private DataSource ds;
-    
+    @PersistenceContext(unitName = "bookPU")
+    private EntityManager entityManager;
+     
     public List<Book> getBookList() throws SQLException {
-        System.out.println("getBookList");
         logger.info("Before getting connection");
-        Connection con = ds.getConnection();
-        PreparedStatement ps = con.prepareStatement("select * from BOOK");
-        ResultSet result = ps.executeQuery();
-        logger.info("After executing query");
         
-        List<Book> list = new ArrayList();
+        Query query = entityManager.createQuery("select b from Book b", Book.class);
+        List<Book> list =  query.getResultList();
         
-        while (result.next()) {
-            Book b = new Book();
-            b.setId(result.getLong("id"));
-            b.setTitle(result.getString("title"));
-            b.setPrice(result.getFloat("price"));
-            list.add(b);
-        }
-        
-        logger.info("Before returning");
+        logger.info("Before returning: " + list.size());
         
         return list;
     }
