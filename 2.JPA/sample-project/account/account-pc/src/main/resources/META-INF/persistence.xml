@@ -3,6 +3,7 @@
     <persistence-unit name="accountPU" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>jdbc/SE554</jta-data-source>
+        <jar-file>../account-ejb-1.0.1.jar</jar-file>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>

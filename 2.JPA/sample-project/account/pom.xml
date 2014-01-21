@@ -12,6 +12,7 @@
         <module>account-ear</module>
         <module>account-web</module>
         <module>account-ejb</module>
+        <module>account-pc</module>
     </modules>
 
     <properties>
