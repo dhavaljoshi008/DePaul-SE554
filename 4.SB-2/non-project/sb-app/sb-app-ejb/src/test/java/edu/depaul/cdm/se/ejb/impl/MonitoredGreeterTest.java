@@ -1,10 +1,6 @@
 package edu.depaul.cdm.se.ejb.impl;
 
-import javax.ejb.embeddable.EJBContainer;
-import javax.naming.Context;
 import javax.naming.NamingException;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

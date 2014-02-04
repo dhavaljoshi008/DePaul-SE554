@@ -1,6 +1,5 @@
 package edu.depaul.cdm.se.ejb.impl;
 
-import edu.depaul.cdm.se.sbejb.ISecureCounter;
 import edu.depaul.cdm.se.sbejb.IStatelessCounter;
 import javax.naming.NamingException;
 import org.junit.Test;
