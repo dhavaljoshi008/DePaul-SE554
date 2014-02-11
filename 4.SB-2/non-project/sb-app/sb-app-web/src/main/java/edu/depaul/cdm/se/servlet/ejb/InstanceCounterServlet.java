@@ -32,8 +32,8 @@ public class InstanceCounterServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        final String sfLookupKey = "java:global/edu.depaul.cdm.se_sb-app-ear_ear_1.5-SNAPSHOT/sb-app-ejb-1.5-SNAPSHOT/StatefulCounter";
-        final String slLookupKey = "java:global/edu.depaul.cdm.se_sb-app-ear_ear_1.5-SNAPSHOT/sb-app-ejb-1.5-SNAPSHOT/StatelessCounter";
+        final String sfLookupKey = "java:global/sb-app-ear/sb-app-ejb-7.4.1/StatefulCounter";
+        final String slLookupKey = "java:global/sb-app-ear/sb-app-ejb-7.4.1/StatelessCounter";
         final String sessionKey = "counter";
         
         try {
