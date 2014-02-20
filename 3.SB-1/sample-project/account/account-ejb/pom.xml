@@ -30,9 +30,9 @@
                         <configuration>
                             <tasks>
                                 <!--backup the "proper" persistence.xml-->
-                                <copy file="${project.build.outputDirectory}/META-INF/persistence.xml" tofile="${project.build.outputDirectory}/META-INF/persistence.xml.proper"/>
+                                <copy file="${project.build.outputDirectory}/META-INF/persistence.xml" tofile="${project.build.outputDirectory}/META-INF/persistence.xml.proper" overwrite="true"/>
                                 <!--replace the "proper" persistence.xml with the "test" version-->
-                                <copy file="${project.build.testOutputDirectory}/META-INF/persistence.xml" tofile="${project.build.outputDirectory}/META-INF/persistence.xml"/>
+                                <copy file="${project.build.testOutputDirectory}/META-INF/persistence.xml" tofile="${project.build.outputDirectory}/META-INF/persistence.xml" overwrite="true"/>
                             </tasks>
                         </configuration>
                         <goals>
@@ -44,8 +44,12 @@
                         <phase>prepare-package</phase>
                         <configuration>
                             <tasks>
-                                <!--restore the "proper" persistence.xml -->
-                                <move file="${project.build.outputDirectory}/META-INF/persistence.xml.proper" tofile="${project.build.outputDirectory}/META-INF/persistence.xml" overwrite="true"/>                            </tasks>
+                                <!--
+                                    restore the "proper" persistence.xml
+                                    this would work on the normal build but doesn't work if you want to run Test from 
+                                <move file="${project.build.outputDirectory}/META-INF/persistence.xml.proper" tofile="${project.build.outputDirectory}/META-INF/persistence.xml" overwrite="true"/>                            
+                                -->                                
+                            </tasks>
                         </configuration>
                         <goals>
                             <goal>run</goal>
