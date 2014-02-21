@@ -29,12 +29,12 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.glassfish.extras</groupId>
+       <dependency>
+            <groupId>org.glassfish.main.extras</groupId>
             <artifactId>glassfish-embedded-all</artifactId>
-            <version>3.2-b06</version>
+            <version>4.0-b90</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>        
     </dependencies>
 
     <build>
