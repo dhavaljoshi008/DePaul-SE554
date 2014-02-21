@@ -29,6 +29,7 @@
                         <phase>process-test-resources</phase>
                         <configuration>
                             <tasks>
+                                <echo>Copying test</echo> 
                                 <!--backup the "proper" persistence.xml-->
                                 <copy file="${project.build.outputDirectory}/META-INF/persistence.xml" tofile="${project.build.outputDirectory}/META-INF/persistence.xml.proper" overwrite="true"/>
                                 <!--replace the "proper" persistence.xml with the "test" version-->
@@ -44,11 +45,31 @@
                         <phase>prepare-package</phase>
                         <configuration>
                             <tasks>
+                                <echo>Prepping for real persistence.xml usage</echo> 
                                 <!--
                                     restore the "proper" persistence.xml
                                     this would work on the normal build but doesn't work if you want to run Test from 
-                                <move file="${project.build.outputDirectory}/META-INF/persistence.xml.proper" tofile="${project.build.outputDirectory}/META-INF/persistence.xml" overwrite="true"/>                            
-                                -->                                
+                                -->                               
+                                <move file="${project.build.testOutputDirectory}/META-INF/persistence.xml" tofile="${project.build.outputDirectory}/META-INF/persistence.xml.test" overwrite="true"/>
+                                <copy file="${project.build.outputDirectory}/META-INF/persistence.xml.proper" tofile="${project.build.outputDirectory}/META-INF/persistence.xml" overwrite="true"/>                            
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>copy-test-persitence</id>
+                        <phase>install</phase>
+                        <configuration>
+                            <tasks>
+                                <!--
+                                    Seems little screwy but this is needed after the install step is run because 
+                                    in NetBeans clean build will run install and in order for stand alone JUnits to work
+                                    need to get the jdbc/__default value into persistence.xml which is in the test
+                                -->
+                                <echo>Copying test</echo> 
+                                <copy file="${project.build.outputDirectory}/META-INF/persistence.xml.test" tofile="${project.build.outputDirectory}/META-INF/persistence.xml" overwrite="true"/>
                             </tasks>
                         </configuration>
                         <goals>
@@ -57,6 +78,7 @@
                     </execution>
                 </executions>
             </plugin>
+          
         </plugins>
     </build>
     
