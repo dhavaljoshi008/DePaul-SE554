@@ -2,8 +2,11 @@ package edu.depaul.se.jpa.basic.createdtables;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 //import org.eclipse.persistence.annotations.Cache;
 //import org.eclipse.persistence.annotations.CacheType;
+
+
 
 @Entity
 //@Cache(type= CacheType.WEAK, expiry=60000)
@@ -17,8 +20,12 @@ public class Book implements Serializable {
     @Version
     private Integer version;
 
+    @NotNull
     private String title;
+    
+    @NotNull
     private String author;
+    
     private String isbn;
     
     public Integer getVersion() {
