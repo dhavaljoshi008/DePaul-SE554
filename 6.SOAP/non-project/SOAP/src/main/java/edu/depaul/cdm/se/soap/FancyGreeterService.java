@@ -1,5 +1,7 @@
 package edu.depaul.cdm.se.soap;
 
+import edu.depaul.cdm.se.soap.param.GreeterRequest;
+import edu.depaul.cdm.se.soap.param.GreeterResponse;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -17,8 +19,7 @@ public class FancyGreeterService {
     }
     
     public GreeterResponse saySomethingElse(GreeterRequest request) {
-        GreeterResponse response = new GreeterResponse(request.getName());
-        response.setMessage("Say something, ");
+        GreeterResponse response = new GreeterResponse("Say something, ", request.getName());
         return response;
     }
 }
