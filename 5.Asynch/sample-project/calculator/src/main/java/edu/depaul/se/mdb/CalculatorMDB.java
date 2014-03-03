@@ -67,7 +67,7 @@ public class CalculatorMDB implements MessageListener {
                 c = (CalculatorRequest) m.unmarshal(reader);
             }
         } catch (JAXBException ex) {
-            Logger.getLogger(CalculatorMDB.class.getName()).log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, null, ex);
         }
 
         return c;
