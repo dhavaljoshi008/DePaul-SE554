@@ -13,7 +13,13 @@
         <dependency>
             <groupId>edu.depaul.cdm.se</groupId>
             <artifactId>account-remote</artifactId>
-            <version>7.7.1</version>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>edu.depaul.cdm.se</groupId>
+            <artifactId>account-jpa</artifactId>
+            <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

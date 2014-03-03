@@ -1,5 +1,6 @@
 package edu.depaul.cdm.se.account.service;
 
+import edu.depaul.cdm.se.account.service.xml.Accounts;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.jws.WebMethod;
@@ -44,8 +45,9 @@ public class Account {
     }
     
     @WebMethod
-    public List getAllAccounts() {
-        return accountRemote.getAllAccounts();
+    public Accounts getAllAccounts() {
+        Accounts accounts = new Accounts();
+        return new Accounts(accountRemote.getAllAccounts());
     };
 
 }
