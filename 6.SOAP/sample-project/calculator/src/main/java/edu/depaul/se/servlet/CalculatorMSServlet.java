@@ -28,7 +28,7 @@ public class CalculatorMSServlet extends HttpServlet {
 
     @Resource(mappedName = "jms/CalculatorQ")
     private Queue queue;
-    @Resource(mappedName = "jms/QueueConnectionFactory")
+    @Resource(mappedName = "jms/ConnectionFactory")
     private QueueConnectionFactory queueConnectionFactory;
 
     /**

@@ -14,13 +14,13 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-@MessageDriven(mappedName = "jms/javaee6/CalculatorQ",
+@MessageDriven(mappedName = "jms/CalculatorQ",
 activationConfig = {
     @ActivationConfigProperty(
      propertyName = "destinationType", propertyValue = "javax.jms.Queue")})
 public class CalculatorMDB implements MessageListener {
 
-    Logger logger = Logger.getLogger("test");
+    private Logger logger = Logger.getLogger(CalculatorMDB.class.getName());
 
     public void onMessage(Message message) {
         // Based on the Calculator operator, call the appropriate method
@@ -50,7 +50,7 @@ public class CalculatorMDB implements MessageListener {
 //                producer.send(reply);
             }
         } catch (JMSException ex) {
-            Logger.getLogger(CalculatorMDB.class.getName()).log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, null, ex);
         }
 
     }
@@ -71,7 +71,7 @@ public class CalculatorMDB implements MessageListener {
             reader = new StringReader(xml);
             c = (CalculatorRequest) m.unmarshal(reader);
         } catch (JAXBException ex) {
-            Logger.getLogger(CalculatorMDB.class.getName()).log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, null, ex);
         } finally {
             reader.close();
         }
