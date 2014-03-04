@@ -4,11 +4,18 @@ import edu.depaul.se.xml.CalculatorRequest;
 import java.io.StringReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.Resource;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
+import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
+import javax.jms.MessageProducer;
+import javax.jms.QueueConnection;
+import javax.jms.QueueConnectionFactory;
+import javax.jms.QueueSession;
+import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -22,6 +29,9 @@ public class CalculatorMDB implements MessageListener {
 
     private static final Logger logger = Logger.getLogger(CalculatorMDB.class.getName());
 
+    @Resource(mappedName = "jms/ConnectionFactory")    
+    private QueueConnectionFactory queueConnectionFactory;
+    
     public void onMessage(Message message) {
         // Based on the Calculator operator, call the appropriate method
         CalculatorRequest c = null;
@@ -44,6 +54,14 @@ public class CalculatorMDB implements MessageListener {
 
             if (message.getJMSReplyTo() == null) {
                 logger.log(Level.INFO, "{0} {1} {2} = {3}", new Object[]{c.getLhs(), c.getOperator(), c.getRhs(), result});
+            } else {
+                Destination replyDestination = message.getJMSReplyTo();
+                QueueConnection queueConnection = queueConnectionFactory.createQueueConnection();
+                Session session = queueConnection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+                MessageProducer replyProducer = session.createProducer(message.getJMSReplyTo());
+                TextMessage replyMessage = session.createTextMessage("" + result);
+                replyMessage.setJMSCorrelationID(message.getJMSMessageID());
+                replyProducer.send(replyMessage);
             }
         } catch (JMSException ex) {
             logger.log(Level.SEVERE, null, ex);

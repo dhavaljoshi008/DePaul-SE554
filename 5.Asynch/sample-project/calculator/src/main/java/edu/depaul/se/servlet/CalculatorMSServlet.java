@@ -21,6 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import static edu.depaul.se.xml.CalculatorRequest.CalculatorOperation;
+import javax.jms.Destination;
+import javax.jms.MessageConsumer;
 
 @WebServlet("/CalculatorMSServlet")
 public class CalculatorMSServlet extends HttpServlet {
@@ -92,15 +94,27 @@ public class CalculatorMSServlet extends HttpServlet {
             JAXBContext context = JAXBContext.newInstance(CalculatorRequest.class);
             Marshaller m = context.createMarshaller();
             m.marshal(c, writer);
-
+            
             TextMessage msg = queueSession.createTextMessage(writer.toString());
 
+            Destination replyQueue = queueSession.createTemporaryQueue();
+            MessageConsumer responseConsumer = queueSession.createConsumer(replyQueue);
+
+            msg.setJMSReplyTo(replyQueue);
             sender.send(msg);
+
+            TextMessage reply = (TextMessage) responseConsumer.receive(10000);
+            
             out.println("<html>");
             out.println("<h1>");
             out.print("Message sent: ");
-            out.print(writer.toString());
-            out.println(" will be handled later");
+            out.println(writer.toString());
+            out.print("<p>");
+            
+            if (reply != null) {
+                out.print("Result is " + reply.getText());
+            }
+            
             out.println("</html>");
 
         } catch (Exception  e) {
