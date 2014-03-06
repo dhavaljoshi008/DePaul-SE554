@@ -18,22 +18,23 @@ public class Receiver {
         System.out.println("P2P Dr. Fraiser is listening...");
         while (true) {
             TextMessage message = (TextMessage) consumer.receive();
-            System.out.println("Message received: " + message.getText());
+            String request = message.getText();
+            System.out.println("Message received: " + request);
 
             Destination replyDestination = message.getJMSReplyTo();
 
             // Check to see if reply was requested
             if (replyDestination != null) {
-                session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-                MessageProducer replyProducer = session.createProducer(message.getJMSReplyTo());
-                TextMessage replyMessage = session.createTextMessage("Thank you");
-                replyMessage.setJMSCorrelationID(message.getJMSMessageID());
-                replyProducer.send(replyMessage);
-                System.out.println("Message sent");
+                try (JMSContext context = connectionFactory.createContext()) {
+
+                    // prepare response 
+                    TextMessage replyMessage
+                            = context.createTextMessage("Reply to: " + request);
+
+                    // send response 
+                    context.createProducer().send(replyDestination, replyMessage);
+                }
             }
         }
-
-        //session.close();
-        //connection.close();
     }
 }
