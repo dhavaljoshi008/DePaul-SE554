@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.jms.Destination;
+import javax.jms.JMSContext;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -52,16 +53,21 @@ public class CalculatorMDB implements MessageListener {
                     break;
             }
 
-            if (message.getJMSReplyTo() == null) {
+            Destination replyDestination = message.getJMSReplyTo();
+
+            if (replyDestination == null) {
                 logger.log(Level.INFO, "{0} {1} {2} = {3}", new Object[]{c.getLhs(), c.getOperator(), c.getRhs(), result});
             } else {
-                Destination replyDestination = message.getJMSReplyTo();
-                QueueConnection queueConnection = queueConnectionFactory.createQueueConnection();
-                Session session = queueConnection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-                MessageProducer replyProducer = session.createProducer(message.getJMSReplyTo());
-                TextMessage replyMessage = session.createTextMessage("" + result);
-                replyMessage.setJMSCorrelationID(message.getJMSMessageID());
-                replyProducer.send(replyMessage);
+                try (JMSContext context = queueConnectionFactory.createContext()) {
+
+                    // prepare response 
+                    TextMessage replyMessage
+                            = context.createTextMessage("" + result);
+                    replyMessage.setJMSCorrelationID(message.getJMSMessageID());
+
+                    // send response 
+                    context.createProducer().send(replyDestination, replyMessage);
+                }
             }
         } catch (JMSException ex) {
             logger.log(Level.SEVERE, null, ex);

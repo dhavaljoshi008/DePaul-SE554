@@ -22,7 +22,10 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import static edu.depaul.se.xml.CalculatorRequest.CalculatorOperation;
 import javax.jms.Destination;
+import javax.jms.JMSConsumer;
+import javax.jms.JMSContext;
 import javax.jms.MessageConsumer;
+import javax.jms.TemporaryQueue;
 
 @WebServlet("/CalculatorMSServlet")
 public class CalculatorMSServlet extends HttpServlet {
@@ -44,7 +47,6 @@ public class CalculatorMSServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        QueueConnection queueConnection = null;
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
@@ -68,12 +70,6 @@ public class CalculatorMSServlet extends HttpServlet {
             }
 
 
-            queueConnection = queueConnectionFactory.createQueueConnection();
-            queueConnection.start();
-            QueueSession queueSession = queueConnection.createQueueSession(false,
-                    Session.AUTO_ACKNOWLEDGE);
-            QueueSender sender = queueSession.createSender(queue);
-
             CalculatorOperation operation;
             // Send message
             if (operator == '+') {
@@ -91,30 +87,32 @@ public class CalculatorMSServlet extends HttpServlet {
             StringWriter writer = new StringWriter();
 
 
-            JAXBContext context = JAXBContext.newInstance(CalculatorRequest.class);
-            Marshaller m = context.createMarshaller();
+            Marshaller m = JAXBContext.newInstance(CalculatorRequest.class).createMarshaller();
             m.marshal(c, writer);
+            String answer = "Don't know";
             
-            TextMessage msg = queueSession.createTextMessage(writer.toString());
+            try (JMSContext context = queueConnectionFactory.createContext()) {
+                TemporaryQueue replyQueue = context.createTemporaryQueue();
+                String msg = writer.toString();
+                TextMessage requestMessage
+                        = context.createTextMessage(msg);
+                requestMessage.setJMSReplyTo(replyQueue);
 
-            Destination replyQueue = queueSession.createTemporaryQueue();
-            MessageConsumer responseConsumer = queueSession.createConsumer(replyQueue);
+                System.out.println("Request: " + msg);
+                context.createProducer().send(
+                        queue, requestMessage);
 
-            msg.setJMSReplyTo(replyQueue);
-            sender.send(msg);
-
-            TextMessage reply = (TextMessage) responseConsumer.receive(10000);
+                JMSConsumer consumer = context.createConsumer(replyQueue);
+                answer = consumer.receiveBody(String.class);
+            }
+            
             
             out.println("<html>");
             out.println("<h1>");
             out.print("Message sent: ");
             out.println(writer.toString());
             out.print("<p>");
-            
-            if (reply != null) {
-                out.print("Result is " + reply.getText());
-            }
-            
+            out.print("Result is " + answer);
             out.println("</html>");
 
         } catch (Exception  e) {
@@ -123,13 +121,6 @@ public class CalculatorMSServlet extends HttpServlet {
             out.println("Error processing request: " + e.toString());
             out.println("</html>");
             throw new RuntimeException(e);
-        } finally {
-            try {
-                if (queueConnection != null) {
-                    queueConnection.close();
-                }
-            } catch (JMSException e) { //ignore
-            }
         }
     }
 
