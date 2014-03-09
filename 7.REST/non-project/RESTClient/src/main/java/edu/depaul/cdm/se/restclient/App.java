@@ -3,11 +3,10 @@ package edu.depaul.cdm.se.restclient;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * Hello world!
+ * Sample JAX-RS client sample code
  *
  */
 public class App 
