@@ -11,7 +11,7 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
-@MessageDriven(mappedName = "jms/javaee6/transferFundsQ",
+@MessageDriven(mappedName = "jms/transferFundsQ",
 activationConfig = {
     @ActivationConfigProperty(
      propertyName = "destinationType", propertyValue = "javax.jms.Queue")})
