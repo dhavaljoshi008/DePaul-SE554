@@ -24,7 +24,11 @@ public class AccountServiceTest {
     public static void setUp() {
         Properties props = new Properties();
         props.put(EJBContainer.MODULES, new File("target/classes"));
-
+        
+//        props.put("org.glassfish.ejb.embedded.glassfish.configuration.file","domain-test.xml");
+//        props.put("org.glassfish.ejb.embedded.glassfish.installation.root",   
+//            "./src/test/resources/glassfish");
+        
         ec = EJBContainer.createEJBContainer(props);
 
         // ec = EJBContainer.createEJBContainer();

@@ -35,6 +35,11 @@
             <artifactId>account-jpa</artifactId>
             <version>${project.version}</version>
         </dependency>  
+        <dependency>
+            <groupId>edu.depaul.cdm.se</groupId>
+            <artifactId>account-mdb</artifactId>
+            <version>${project.version}</version>
+        </dependency>  
     </dependencies>
     <build>
         <plugins>
