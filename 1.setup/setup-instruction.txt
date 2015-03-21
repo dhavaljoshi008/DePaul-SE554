@@ -1,6 +1,5 @@
 I)  IDE Setup
 (a) NetBeans
-   Using NetBeans 7.4
    https://netbeans.org/downloads/
    Download Java EE edition ****make sure Glassfish is selected****
    Admin password embedded in NetBeans setup
