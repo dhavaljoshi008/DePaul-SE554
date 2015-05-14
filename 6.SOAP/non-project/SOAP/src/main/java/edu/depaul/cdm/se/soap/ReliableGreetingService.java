@@ -24,6 +24,14 @@ public class ReliableGreetingService {
         return "Hello " + txt + " !!";
     }
     
+
+    /* Get Sesssion using well-known key in MessageContext */
+    private Map getSession() {
+        return (Map)context.getMessageContext()
+                .get("com.sun.xml.ws.session");
+
+    }
+    
     @WebMethod
     public void addString(String s ) {
         /* append string to session data */
@@ -34,14 +42,6 @@ public class ReliableGreetingService {
     public String getResult() {
         /* return session data */
         return getSessionData();
-    }
-    
-
-    /* Get Sesssion using well-known key in MessageContext */
-    private Map getSession() {
-        return (Map)context.getMessageContext()
-                .get("com.sun.xml.ws.session");
-
     }
 
     /* Get String associated with SessionID for current request */

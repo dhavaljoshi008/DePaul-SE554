@@ -12,8 +12,7 @@ import javax.jws.WebService;
 @WebService(serviceName = "GreeterSBProxyService")
 public class GreeterSBProxyService {
     @EJB
-    private GreeterSB ejbRef;// Add business logic below. (Right-click in editor and choose
-    // "Web Service > Add Operation"
+    private GreeterSB ejbRef;
 
     @WebMethod(operationName = "greet")
     public String greet(@WebParam(name = "name") String name) {
