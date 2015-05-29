@@ -16,8 +16,12 @@
             <li><a href="GreeterSBExtService?wsdl">SessionBean extension</a></li>
             <li><a href="FancyGreeterService?wsdl">Greeter with Req/Resp objects</a></li>
             <li><a href="GreeterImplService?wsdl">GreeterService interface</a></li>
+            
+            <p>WS-* Example</p>
             <li><a href="LongAwaitedGreetingService?wsdl">Long awaited greeting</a></li>
             <li><a href="AddressedGreeterService?wsdl">Addressing</a></li>
             <li><a href="ReliableGreetingService?wsdl">Reliable Message</a></li>
+            <li><a href="BinaryMessage11Service?wsdl">Binary Attachment v1</a></li>
+            <li><a href="BinaryMessage12Service?wsdl">Binary Attachment v2</a></li>
     </body>
 </html>
