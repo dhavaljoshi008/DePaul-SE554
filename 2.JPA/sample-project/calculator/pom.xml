@@ -7,7 +7,7 @@
     <version>1.0.0</version>
     <packaging>war</packaging>
 
-    <name>calculator</name>
+    <name>calculator2</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
