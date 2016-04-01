@@ -12,10 +12,12 @@ I)  IDE Setup
    b5)  Define new server (point to location where glassfish from b1 was unzipped, make sure you select down to domain level)
    
 II)  Glassfish setup for database
-To run these examples you must have GlassFish running and create the following administered objects :
+(a) add path to include %gf_install_dir%\glassfish\bin 
+for Windows, it may be something like path=%path%;\gf\glassfish\bin
+for Linux, it may be
+(b) execute setup.bat or setup.sh
 
-To manage JDBC connection factories using the command-line utility from %gf_install_dir%\glassfish\bin, 
-
+For reference following are the manual steps
 I. asadmin start-domain
 
 wait for it to show started successful
@@ -34,4 +36,5 @@ IV.  asadmin stop-domain
 
 from IDE, on the project, you can right click and select run.  It should start the Glassfish server, open a browser to http://localhost:8080/1.setup and show a book list
 
+You are now set
 
