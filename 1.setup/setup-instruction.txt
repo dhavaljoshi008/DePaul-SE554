@@ -16,9 +16,22 @@ To run these examples you must have GlassFish running and create the following a
 
 To manage JDBC connection factories using the command-line utility from %gf_install_dir%\glassfish\bin, 
 
-asadmin start-domain
+I. asadmin start-domain
 
-type the following 2 commands
+wait for it to show started successful
+
+then type the following 2 commands
+II.  
+(a) for linux based (include Apple) type
 asadmin create-jdbc-connection-pool --datasourceclassname org.apache.derby.jdbc.ClientDataSource --restype javax.sql.XADataSource --property portNumber=1527:password=APP:user=APP:serverName=localhost:databaseName=SE554DB:connectionAttributes=\;create\\=true SE554Pool
-asadmin create-jdbc-resource --connectionpoolid SE554Pool jdbc/SE554
+
+(b) for windows 
+asadmin create-jdbc-connection-pool --datasourceclassname org.apache.derby.jdbc.ClientDataSource --restype javax.sql.XADataSource --property portNumber=1527:password=APP;user=APP:serverName=localhost:databaseName=SE554DB:connectAttributes=\;create\=true SE554Pool
+
+III. asadmin create-jdbc-resource --connectionpoolid SE554Pool jdbc/SE554
+
+IV.  asadmin stop-domain
+
+from IDE, on the project, you can right click and select run.  It should start the Glassfish server, open a browser to http://localhost:8080/1.setup and show a book list
+
 
