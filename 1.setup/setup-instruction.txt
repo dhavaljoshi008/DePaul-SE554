@@ -26,7 +26,7 @@ II.
 asadmin create-jdbc-connection-pool --datasourceclassname org.apache.derby.jdbc.ClientDataSource --restype javax.sql.XADataSource --property portNumber=1527:password=APP:user=APP:serverName=localhost:databaseName=SE554DB:connectionAttributes=\;create\\=true SE554Pool
 
 (b) for windows 
-asadmin create-jdbc-connection-pool --datasourceclassname org.apache.derby.jdbc.ClientDataSource --restype javax.sql.XADataSource --property portNumber=1527:password=APP;user=APP:serverName=localhost:databaseName=SE554DB:connectAttributes=\;create\=true SE554Pool
+asadmin create-jdbc-connection-pool --datasourceclassname org.apache.derby.jdbc.ClientDataSource --restype javax.sql.XADataSource --property portNumber=1527:password=APP:user=APP:serverName=localhost:databaseName=SE554DB:connectionAttributes=\;create\=true SE554Pool
 
 III. asadmin create-jdbc-resource --connectionpoolid SE554Pool jdbc/SE554
 
