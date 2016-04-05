@@ -10,3 +10,11 @@ Eclipse eGit plugin help http://wiki.eclipse.org/EGit/Learning_Material
 Works with Netbeans and Glassfish4
 
 Be sure to look at readme.txt in each of the sections to determine if there are any Glassfish specific setups
+
+If needing JVM to get it started, consider following
+http://www.osboxes.org/ubuntu/
+
+Install java using
+sudo  sudo apt-get install openjdk-8-jdk
+
+Install Netbeans
