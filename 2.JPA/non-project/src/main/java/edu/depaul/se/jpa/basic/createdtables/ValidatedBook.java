@@ -2,11 +2,16 @@ package edu.depaul.se.jpa.basic.createdtables;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+//import org.eclipse.persistence.annotations.Cache;
+//import org.eclipse.persistence.annotations.CacheType;
+
 
 
 @Entity
+//@Cache(type= CacheType.WEAK, expiry=60000)
 @NamedQuery(name="findAllBooks", query="select b from Book b")
-public class Book implements Serializable {
+public class ValidatedBook implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,8 +20,10 @@ public class Book implements Serializable {
     @Version
     private Integer version;
 
+    @NotNull
     private String title;
     
+    @NotNull
     private String author;
     
     private String isbn;
@@ -66,10 +73,10 @@ public class Book implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        if (!(object instanceof Book)) {
+        if (!(object instanceof ValidatedBook)) {
             return false;
         }
-        Book other = (Book) object;
+        ValidatedBook other = (ValidatedBook) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -78,7 +85,7 @@ public class Book implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.depaul.se.jpa.basic.Book[ id=" + id + " ]";
+        return "edu.depaul.se.jpa.basic.ValidatedBook[ id=" + id + " ]";
     }
     
 }

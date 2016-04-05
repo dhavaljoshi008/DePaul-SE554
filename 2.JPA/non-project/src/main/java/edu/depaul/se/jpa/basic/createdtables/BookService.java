@@ -38,7 +38,7 @@ public class BookService {
         return em.createNamedQuery("findAllBooks").getResultList();
     }
 
-    public void deleteBook(int bookId) {
+    public void deleteBook(long bookId) {
         EntityTransaction tx = em.getTransaction();
 
         tx.begin();
