@@ -12,9 +12,9 @@ Works with Netbeans and Glassfish4
 Be sure to look at readme.txt in each of the sections to determine if there are any Glassfish specific setups
 
 If needing JVM to get it started, consider following
-http://www.osboxes.org/ubuntu/
-
-Install java using
+1)  http://www.osboxes.org/ubuntu/
+2)  Install java using, following command
 sudo  sudo apt-get install openjdk-8-jdk
 
-Install Netbeans
+3)  Install Netbeans
+http://netbeans.org and selecting EE edition
