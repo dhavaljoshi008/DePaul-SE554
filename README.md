@@ -13,7 +13,7 @@ Be sure to look at readme.txt in each of the sections to determine if there are 
 
 If needing JVM to get it started, consider following
 <li>  http://www.osboxes.org/ubuntu/
-<li>  Install java using, following command
+<li>  Install java using, following command<p>
 <i>sudo  sudo apt-get install openjdk-8-jdk</i>
 <li>  Install Netbeans
 http://netbeans.org and selecting EE edition
