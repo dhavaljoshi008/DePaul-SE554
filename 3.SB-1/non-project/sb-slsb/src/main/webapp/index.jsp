@@ -10,7 +10,6 @@
       <a href="Greeter2">POJO2</a><br>
       <a href="LongGreeter">Long EJB</a><br>
       <a href="GreeterBean">EJB 1</a><br>
-      <a href="GreeterBean2">EJB 2</a>
   </body>
 </html>
 
