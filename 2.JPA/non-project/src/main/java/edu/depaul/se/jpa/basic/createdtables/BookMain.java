@@ -7,7 +7,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 /**
- *  JPA using main
+ *  JPA using main as standalone
  */
 public class BookMain {
     private static EntityManagerFactory emf;
@@ -96,4 +96,5 @@ public class BookMain {
         System.out.println(books.size());
     }
     
+
 }
